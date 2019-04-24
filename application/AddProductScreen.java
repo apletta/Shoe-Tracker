@@ -14,7 +14,7 @@ import application.TopArea.*;
 
 class AddProductScreen {
 	
-      protected BorderPane addProductScreen() {
+      protected static BorderPane screen() {
         
       GridPane gridPane = new GridPane();
       gridPane.setHgap(10);

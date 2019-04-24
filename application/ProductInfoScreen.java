@@ -14,7 +14,7 @@ import application.TopArea.*;
 
 class ProductInfoScreen {
 	
-      protected BorderPane productInfoScreen() {
+      protected static BorderPane screen() {
         GridPane pane = new GridPane();
         pane.setHgap(10);
         pane.setVgap(10);
