@@ -1,6 +1,8 @@
 package application;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.*;
 import javafx.stage.*;
 import javafx.scene.*;
@@ -20,6 +22,7 @@ class ProductInfoScreen {
 	  pane.setVgap(10);
 	  pane.setPadding(new Insets(10,10,10,10));
 	  
+	  // Need to add lookup functions to find actual object info
 	  ImageView image = new ImageView(new Image("aj1.png"));
 	  image.setFitWidth(200);
 	  image.setFitHeight(150);
@@ -58,6 +61,22 @@ class ProductInfoScreen {
 	  checkSize.setAlignment(Pos.CENTER);
 	  Button delete = new Button("Delete Product(s)");
 	  delete.setAlignment(Pos.CENTER);
+
+		// delete actions
+		delete.setOnAction(new EventHandler<ActionEvent>() {
+
+			public void handle(ActionEvent event) {
+				// Load ProductInfoScreen
+				Stage stage = (Stage) delete.getScene().getWindow();
+				Scene scene = new Scene(DeleteProductScreen.screen(), 1600, 900);
+				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+				stage.setTitle("Sole Table");
+				stage.setScene(scene);
+				stage.hide();
+				stage.show();
+			}
+		});
+
 	  
 	  VBox vbox = new VBox(15);
 	  vbox.setAlignment(Pos.CENTER);

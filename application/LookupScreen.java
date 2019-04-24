@@ -9,40 +9,59 @@ import javafx.scene.shape.*;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
 import javafx.scene.text.*;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.event.ActionEvent;
+
+import java.io.IOException;
 
 import application.TopArea.*;
 
 class LookupScreen {
-	
-      protected static BorderPane screen() {
-        GridPane pane = new GridPane();
-        pane.setHgap(10);
-        pane.setVgap(10);
-        pane.setPadding(new Insets(10,10,10,10));
-        pane.setAlignment(Pos.CENTER);
-        Text promptUser = new Text("Enter Product Number:");
-        promptUser.setId("text");
-        GridPane.setConstraints(promptUser, 0, 0);
-        
-        TextField typeBox = new TextField();
-        GridPane.setConstraints(typeBox, 1, 0);
-        
-        pane.getChildren().addAll(promptUser,typeBox);
-        
-      Button lookupProduct = new Button("Lookup Product");
-      lookupProduct.setPrefSize(300, 50);
-      lookupProduct.setAlignment(Pos.CENTER);
-      
-      VBox box = new VBox(50);
-      box.setAlignment(Pos.CENTER);
-      box.getChildren().addAll(pane,lookupProduct);
-      
-      BorderPane borderPane = new BorderPane();
-      borderPane.setCenter(box);
-      borderPane.setTop(TopArea.topArea("Lookup Product"));
-        
-        return borderPane;
-      }
-      
+
+	protected static BorderPane screen() {
+		GridPane pane = new GridPane();
+		pane.setHgap(10);
+		pane.setVgap(10);
+		pane.setPadding(new Insets(10, 10, 10, 10));
+		pane.setAlignment(Pos.CENTER);
+		Text promptUser = new Text("Enter Product Number:");
+		promptUser.setId("text");
+		GridPane.setConstraints(promptUser, 0, 0);
+
+		TextField typeBox = new TextField();
+		GridPane.setConstraints(typeBox, 1, 0);
+
+		pane.getChildren().addAll(promptUser, typeBox);
+
+		Button lookupProduct = new Button("Lookup Product");
+		lookupProduct.setPrefSize(300, 50);
+		lookupProduct.setAlignment(Pos.CENTER);
+
+		// lookupProduct actions
+		lookupProduct.setOnAction(new EventHandler<ActionEvent>() {
+
+			public void handle(ActionEvent event) {
+				// Load ProductInfoScreen
+				Stage stage = (Stage) lookupProduct.getScene().getWindow();
+				Scene scene = new Scene(ProductInfoScreen.screen(), 1600, 900);
+				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+				stage.setTitle("Sole Table");
+				stage.setScene(scene);
+				stage.hide();
+				stage.show();
+			}
+		});
+
+		VBox box = new VBox(50);
+		box.setAlignment(Pos.CENTER);
+		box.getChildren().addAll(pane, lookupProduct);
+
+		BorderPane borderPane = new BorderPane();
+		borderPane.setCenter(box);
+		borderPane.setTop(TopArea.topArea("Lookup Product"));
+
+		return borderPane;
+	}
 
 }
