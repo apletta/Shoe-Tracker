@@ -1,0 +1,25 @@
+.label{
+	-fx-font-size: 20pt;
+	-fx-font-weight: bold;
+}
+
+.button{
+	-fx-text-fill: black;
+	-fx-font-size: 15.5pt;
+	-fx-font-weight: bold;
+	-fx-background-color: rgb(182,133,80);
+}
+
+#text{
+	-fx-text-fill: black;
+	-fx-font-size: 18;
+	-fx-font-weight: bold;
+}
+
+#text2{
+	-fx-text-fill: black;
+	-fx-alignment: center;
+	-fx-font-size: 16;
+	-fx-font-weight: bold;
+	-fx-underline: true;
+}
