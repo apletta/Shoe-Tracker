@@ -20,6 +20,7 @@ class ProductInfoScreen {
 	  pane.setVgap(10);
 	  pane.setPadding(new Insets(10,10,10,10));
 	  
+	  // Need to add lookup functions to find actual object info
 	  ImageView image = new ImageView(new Image("aj1.png"));
 	  image.setFitWidth(200);
 	  image.setFitHeight(150);

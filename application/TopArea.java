@@ -1,6 +1,8 @@
 package application;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.*;
 import javafx.stage.*;
 import javafx.scene.*;
@@ -13,14 +15,27 @@ import javafx.scene.text.*;
 
 class TopArea {
 
-
-
 	protected static HBox topButtons() {
       ImageView img = new ImageView(new Image("home.png"));
       img.setFitWidth(35);
       img.setFitHeight(35);
       final Button homeButton = new Button();
       homeButton.setGraphic(img);
+      
+		// homeButton actions
+		homeButton.setOnAction(new EventHandler<ActionEvent>() {
+
+			public void handle(ActionEvent event) {
+				// Load ProductInfoScreen
+				Stage stage = (Stage) homeButton.getScene().getWindow();
+				Scene scene = new Scene(HomeScreen.screen(), 1600, 900);
+				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+				stage.setTitle("Sole Table");
+				stage.setScene(scene);
+				stage.hide();
+				stage.show();
+			}
+		});
       
       ImageView img2 = new ImageView(new Image("menu.png"));
       img2.setFitWidth(35);
@@ -40,6 +55,16 @@ class TopArea {
       exitImg.setFitHeight(35);
       final Button exitButton = new Button();
       exitButton.setGraphic(exitImg);
+      
+		// exitButton actions
+		exitButton.setOnAction(new EventHandler<ActionEvent>() {
+
+			public void handle(ActionEvent event) {
+				// Load ProductInfoScreen
+				Stage stage = (Stage) exitButton.getScene().getWindow();
+				stage.close();
+			}
+		});
       
       HBox box = new HBox(0.5);
       box.getChildren().addAll(homeButton,chooseAll,helpButton,exitButton);
