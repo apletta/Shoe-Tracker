@@ -1,7 +1,19 @@
 package application;
 
-class DeleteProductScreen {
+import javafx.application.Application;
+import javafx.geometry.*;
+import javafx.stage.*;
+import javafx.scene.*;
+import javafx.scene.layout.*;
+import javafx.scene.shape.*;
+import javafx.scene.control.*;
+import javafx.scene.image.*;
+import javafx.scene.text.*;
 
+import application.TopArea.*;
+
+
+class DeleteProductScreen {
 
 	protected static BorderPane screen() {
 	  ///Everything put into VBox
@@ -48,7 +60,7 @@ class DeleteProductScreen {
 	  
 	  BorderPane borderPane = new BorderPane();
 	  borderPane.setCenter(vbox);
-	  borderPane.setTop(topArea("Delete Product"));
+	  borderPane.setTop(TopArea.topArea("Delete Product"));
 	  return borderPane;
 	}
 
