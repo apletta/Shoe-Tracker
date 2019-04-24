@@ -67,10 +67,5 @@ public class ShoeTable<K extends Comparable<K>, V> implements HashTableADT<K, V>
     return this.currentCapacity;
   }
 
-  @Override
-  public boolean collisionResolution() {
-    // TODO Auto-generated method stub
-    return false;
-  }
 
 }

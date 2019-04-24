@@ -40,6 +40,5 @@ public interface HashTableADT<K extends Comparable<K>, V> extends ShoeTableADT<K
    // 7 CHAINED BUCKET: linked list of array lists
    // 8 CHAINED BUCKET: linked list of linked lists
    // 9 CHAINED BUCKET: linked list of of binary search trees
-  public boolean collisionResolution() ;
 
 }

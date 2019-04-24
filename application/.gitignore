@@ -8,3 +8,8 @@
 /LookupScreen.class
 /ProductInfoScreen.class
 /TopArea.class
+/HashTable$hashNode.class
+/HashTable.class
+/DuplicateKeyException.class
+/IllegalNullKeyException.class
+/KeyNotFoundException.class
