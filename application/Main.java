@@ -21,11 +21,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-<<<<<<< HEAD
-	        Scene scene = new Scene(LookupScreen.screen(),1600,900);
-=======
 	        Scene scene = new Scene(HomeScreen.screen(),1600,900);
->>>>>>> 4977996ec4f933ef49da415e9e30fc234aa27bab
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setTitle("Sole Table");
 			primaryStage.setScene(scene);
