@@ -18,8 +18,13 @@
 	-fx-font-weight: bold;
 }
 
-#errortext{
+#errorText{
 	-fx-fill: red;
+	-fx-font-size: 12;
+}
+
+#errorTextHidden{
+	-fx-fill: transparent;
 	-fx-font-size: 12;
 }
 

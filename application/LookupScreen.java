@@ -33,10 +33,9 @@ class LookupScreen {
 		TextField typeBox = new TextField();
 		GridPane.setConstraints(typeBox, 1, 0);
 		
-		Text errorText = new Text();
-		errorText.setId("errortext");
+		Text errorText = new Text("Please enter positive integers only, max length 10 digits");
+		errorText.setId("errorTextHidden");
 		GridPane.setConstraints(errorText, 1, 1);
-		
 
 		pane.getChildren().addAll(promptUser, typeBox, errorText);
 
@@ -50,7 +49,11 @@ class LookupScreen {
 
 				try {
 					int productID = Integer.valueOf(typeBox.getText()); // user-entered productID
-		
+
+					if(productID <= 0 ) {
+						throw new NumberFormatException();
+					}
+					
 					// Load ProductInfoScreen
 					Stage stage = (Stage) lookupProduct.getScene().getWindow();
 					Scene scene = new Scene(ProductInfoScreen.screen(), 1600, 900);
@@ -61,7 +64,7 @@ class LookupScreen {
 					stage.show();
 					
 				} catch (NumberFormatException e) {
-					errorText.setText("Please enter integers only, max length 10 digits");
+					errorText.setId("errorText");
 					GridPane.setConstraints(errorText, 1, 1);
 				}
 
