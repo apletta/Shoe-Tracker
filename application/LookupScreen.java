@@ -54,6 +54,10 @@ class LookupScreen {
 						throw new NumberFormatException();
 					}
 					
+					// find in hashtable
+					// hashtable data to fields
+					// display based on fields
+					
 					// Load ProductInfoScreen
 					Stage stage = (Stage) lookupProduct.getScene().getWindow();
 					Scene scene = new Scene(ProductInfoScreen.screen(), 1600, 900);
