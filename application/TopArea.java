@@ -37,11 +37,11 @@ class TopArea {
 			}
 		});
       
-      ImageView img2 = new ImageView(new Image("menu.png"));
-      img2.setFitWidth(35);
-      img2.setFitHeight(35);
-      final Button chooseAll = new Button();
-      chooseAll.setGraphic(img2);
+//      ImageView img2 = new ImageView(new Image("menu.png"));
+//      img2.setFitWidth(35);
+//      img2.setFitHeight(35);
+//      final Button chooseAll = new Button();
+//      chooseAll.setGraphic(img2);
       
       ImageView helpImg = new ImageView(new Image("questionMark.png"));
       helpImg.setFitWidth(35);
@@ -67,7 +67,7 @@ class TopArea {
 		});
       
       HBox box = new HBox(0.5);
-      box.getChildren().addAll(homeButton,chooseAll,helpButton,exitButton);
+      box.getChildren().addAll(homeButton,helpButton,exitButton);
       
       return box;
 	}
