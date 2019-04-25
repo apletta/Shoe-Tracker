@@ -20,6 +20,7 @@ import application.TopArea.*;
 class LookupScreen {
 
 	protected static BorderPane screen() {
+
 		GridPane pane = new GridPane();
 		pane.setHgap(10);
 		pane.setVgap(10);
@@ -31,8 +32,13 @@ class LookupScreen {
 
 		TextField typeBox = new TextField();
 		GridPane.setConstraints(typeBox, 1, 0);
+		
+		Text errorText = new Text();
+		errorText.setId("errortext");
+		GridPane.setConstraints(errorText, 1, 1);
+		
 
-		pane.getChildren().addAll(promptUser, typeBox);
+		pane.getChildren().addAll(promptUser, typeBox, errorText);
 
 		Button lookupProduct = new Button("Lookup Product");
 		lookupProduct.setPrefSize(300, 50);
@@ -40,16 +46,25 @@ class LookupScreen {
 
 		// lookupProduct actions
 		lookupProduct.setOnAction(new EventHandler<ActionEvent>() {
-
 			public void handle(ActionEvent event) {
-				// Load ProductInfoScreen
-				Stage stage = (Stage) lookupProduct.getScene().getWindow();
-				Scene scene = new Scene(ProductInfoScreen.screen(), 1600, 900);
-				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-				stage.setTitle("Sole Table");
-				stage.setScene(scene);
-				stage.hide();
-				stage.show();
+
+				try {
+					int productID = Integer.valueOf(typeBox.getText()); // user-entered productID
+		
+					// Load ProductInfoScreen
+					Stage stage = (Stage) lookupProduct.getScene().getWindow();
+					Scene scene = new Scene(ProductInfoScreen.screen(), 1600, 900);
+					scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+					stage.setTitle("Sole Table");
+					stage.setScene(scene);
+					stage.hide();
+					stage.show();
+					
+				} catch (NumberFormatException e) {
+					errorText.setText("Please enter integers only, max length 10 digits");
+					GridPane.setConstraints(errorText, 1, 1);
+				}
+
 			}
 		});
 
