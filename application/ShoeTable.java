@@ -17,7 +17,8 @@ public class ShoeTable<K extends Comparable<K>, V> implements HashTableADT<K, V>
     this(11,0.75);
   }
   
-  public ShoeTable(int initialCapacity, double loadFactor) {
+  @SuppressWarnings("unchecked")
+public ShoeTable(int initialCapacity, double loadFactor) {
     this.initialCapacity = initialCapacity;
     this.currentCapacity = initialCapacity;
     this.loadFactorThreshold = loadFactor;
