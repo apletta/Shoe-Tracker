@@ -21,11 +21,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-<<<<<<< Updated upstream
 	        Scene scene = new Scene(LookupScreen.screen(),1600,900);
-=======
-	        Scene scene = new Scene(HelpScreen.screen(),1600,900);
->>>>>>> Stashed changes
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setTitle("Sole Table");
 			primaryStage.setScene(scene);
