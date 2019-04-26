@@ -1,4 +1,12 @@
 package shoetable;
+/**
+ * Filename:   ShoeTable.java
+ * Project:    final
+ * Authors:    Liang Shang
+ * Date:       4/25/2019
+ * 
+ * A class implements all the methods in ShoeTableADT
+ */
 
 public class ShoeTable implements ShoeTableADT{
 	
@@ -33,10 +41,11 @@ public class ShoeTable implements ShoeTableADT{
   
 	/**
 	 * lookup shoe information from a given productNumber
-	 * if product does not exit, return null
+	 * if product does not exit, throw KeyNotFoundException
 	 * 
 	 * @param productNumber
 	 * @return a ShoeInfo contains int productNumber, String name, int totalQuantity
+	 * @throws KeyNotFoundException 
 	 */
 	public ShoeInfo lookupShoe(int productNumber) throws KeyNotFoundException {
 		try {
@@ -54,9 +63,11 @@ public class ShoeTable implements ShoeTableADT{
 	/**
 	 * check quantity of every shoe size
 	 * return a string, e.g. ¡°7.5(3) 9.5(8) 10(4) 10.5(2)¡±
+	 * if product does not exit, throw KeyNotFoundException
 	 * 
 	 * @param productNumber
 	 * @return a string of shoe size and quantity
+	 * @throws KeyNotFoundException 
 	 */
 	public String checkSize(int productNumber) throws KeyNotFoundException {
 		try {
@@ -73,7 +84,9 @@ public class ShoeTable implements ShoeTableADT{
 	
 	/**
 	 * decrease quantity from given shoe size
-	 * if quantity to be deleted is larger than current, it will return false
+	 * if product does not exit, throw KeyNotFoundException
+	 * if shoe size does not exit, throw ShoeSizeNotFoundException
+	 * if quantity to be deleted is larger than current, throw QuantityTooLargeException
 	 * 
 	 * @param productNumber
 	 * @param shoeSize

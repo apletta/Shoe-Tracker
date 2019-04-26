@@ -1,30 +1,12 @@
 package shoetable;
-////////////////////ALL ASSIGNMENTS INCLUDE THIS SECTION /////////////////////
-//
-//Title           Hash table and tests
-//Files           HashTable.java, HashTableTest.java
-//Course          CS 400, Spring, 2019
-//
-//Author          Liang Shang
-//Email           lshang6@wisc.edu
-//Lecturer's Name Debra Deppeler
-//
-//////////////////////////////////KNOWN BUG //////////////////////////////////
-//
-//None
-//
-///////////////////////////// CREDIT OUTSIDE HELP /////////////////////////////
-//
-//Students who get help from sources other than their partner must fully 
-//acknowledge and credit those sources of help here.  Instructors and TAs do 
-//not need to be credited here, but tutors, friends, relatives, room mates, 
-//strangers, and others do.  If you received no outside help from either type
-//of source, then please explicitly indicate NONE.
-//
-//Persons         None
-//Online Sources  None
-//
-/////////////////////////////// 80 COLUMNS WIDE ///////////////////////////////
+/**
+ * Filename:   HashArray.java
+ * Project:    final
+ * Authors:    Liang Shang
+ * Date:       4/25/2019
+ * 
+ * Implementation of hash table
+ */
 
 import java.util.ArrayList;
 

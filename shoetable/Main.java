@@ -13,7 +13,7 @@ class Main {
 			shoeTable.addShoe(123456789, "Nike", 5.5, 3);
 			shoeTable.addShoe(123456789, "Nike", 10.5, 6);
 			
-			shoeTable.deleteShoe(123456789, 8.5, 4);
+			shoeTable.deleteShoe(123456789, 8.5, 9);
 			shoeTable.deleteShoe(987654321, 10, 3);
 			
 			ShoeInfo nike = shoeTable.lookupShoe(123456789);
@@ -27,8 +27,6 @@ class Main {
 			System.out.println(jordan.name);
 			System.out.println(jordan.totalQuantity);
 			System.out.println(shoeTable.checkSize(987654321));
-			
-			double a = 9.0;
 		} catch(Exception e) {
 			System.out.println(e.getClass().getName());
 		}

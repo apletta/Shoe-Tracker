@@ -1,4 +1,12 @@
 package shoetable;
+/**
+ * Filename:   ShoeSizeList.java
+ * Project:    final
+ * Authors:    Liang Shang
+ * Date:       4/25/2019
+ * 
+ * An ordered linked list to store shoe size and corresponding quantity
+ */
 
 class ShoeSizeList {
 	
@@ -16,6 +24,7 @@ class ShoeSizeList {
 			this.value = value;
 		}
 	}
+	
 	
 	private Node head;
 	private int size;
