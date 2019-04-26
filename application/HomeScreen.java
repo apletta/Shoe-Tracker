@@ -17,7 +17,7 @@ import application.TopArea.*;
 class HomeScreen {
 	
 	protected static BorderPane screen() {
-      
+	  
       Button addProduct = new Button("Add Product");
       addProduct.setPrefSize(300, 100);
       

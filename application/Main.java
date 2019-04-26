@@ -33,6 +33,13 @@ public class Main extends Application {
 
 
 	public static void main(String[] args) {
+      
+      Stock.shoeTable.addShoe(123456789, "Nike", 8.5, 5);
+      Stock.shoeTable.addShoe(123456789, "Nike", 5.5, 3);
+      Stock.shoeTable.addShoe(123456789, "Nike", 10.5, 6);
+      Stock.shoeTable.deleteShoe(123456789, 8.5, 4);
+      
+      System.out.println(Stock.shoeTable.checkSize(123456789));
 		launch(args);
 	}
 }

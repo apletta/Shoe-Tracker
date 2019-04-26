@@ -10,11 +10,11 @@ package shoetable;
 
 class ShoeInfo {
 	
-	int productNumber;
-	String name;
-	int totalQuantity;
+	public int productNumber;
+	public String name;
+	public int totalQuantity;
 	
-	protected ShoeInfo(int productNumber, String name, int totalQuantity) {
+	public ShoeInfo(int productNumber, String name, int totalQuantity) {
 		this.productNumber = productNumber;
 		this.name = name;
 		this.totalQuantity = totalQuantity;
