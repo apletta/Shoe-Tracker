@@ -14,7 +14,7 @@ class Main {
 			shoeTable.addShoe(123456789, "Nike", 10.5, 6);
 			
 			shoeTable.deleteShoe(123456789, 5.5, 0);
-			shoeTable.deleteShoe(987654321, 10, 5);
+			shoeTable.deleteShoe(987654321, 10.000, 5);
 			
 			ShoeInfo nike = shoeTable.lookupShoe(123456789);
 			System.out.println(nike.productNumber);

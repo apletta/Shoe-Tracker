@@ -8,11 +8,11 @@
  */
 package shoetable;
 
-class ShoeInfo {
+public class ShoeInfo {
 	
-	int productNumber;
-	String name;
-	int totalQuantity;
+	public int productNumber;
+	public String name;
+	public int totalQuantity;
 	
 	protected ShoeInfo(int productNumber, String name, int totalQuantity) {
 		this.productNumber = productNumber;
