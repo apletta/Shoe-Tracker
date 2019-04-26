@@ -8,6 +8,8 @@
  */
 package shoetable;
 
+import java.util.List;
+
 public interface ShoeTableADT {
 
 	/**
@@ -38,9 +40,8 @@ public interface ShoeTableADT {
 	 * 
 	 * @param productNumber
 	 * @return a string of shoe size and quantity
-	 * @throws KeyNotFoundException 
 	 */
-	public String checkSize(int productNumber) throws KeyNotFoundException;
+	public String checkSize(int productNumber);
 	
 	/**
 	 * decrease quantity from given shoe size
@@ -51,10 +52,21 @@ public interface ShoeTableADT {
 	 * @param productNumber
 	 * @param shoeSize
 	 * @param quantity
-	 * @throws ShoeSizeNotFoundException 
-	 * @throws QuantityTooLargeException 
-	 * @throws KeyNotFoundException 
 	 */
-	public void deleteShoe(int productNumber, double shoeSize, int quantity) 
-			throws KeyNotFoundException, QuantityTooLargeException, ShoeSizeNotFoundException;
+	public void deleteShoe(int productNumber, double shoeSize, int quantity);
+	
+	/**
+	 * Note: elements in this list are String, when delete you may need to convert them into double
+	 * by Double.parseDouble(String)
+	 * 
+	 * @return a String list of shoe sizes of given product number
+	 */
+	public List<String> getSizeList(int productNumber);
+	
+	/**
+	 * @return the quantity of given product number and shoe size
+	 */
+	public int getQuantity(int productNumber, double shoeSize);
+	
+	
 }

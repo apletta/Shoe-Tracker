@@ -8,6 +8,9 @@
  */
 package shoetable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class ShoeSizeList {
 	
 	/**
@@ -74,10 +77,8 @@ class ShoeSizeList {
 	 * 
 	 * @param key
 	 * @param value
-	 * @throws QuantityTooLargeException
-	 * @throws ShoeSizeNotFoundException
 	 */
-	protected void decrease(double key, int value) throws QuantityTooLargeException, ShoeSizeNotFoundException {
+	protected void decrease(double key, int value) {
 		Node current = head;
 		while (current.next != null) { // traversal to the end of list
 			double compare = current.next.key-key;;
@@ -93,14 +94,50 @@ class ShoeSizeList {
 					this.size--;
 					return;
 				} else { // if current quantity is smaller than quantity to be decreased
-					throw new QuantityTooLargeException();
+					return;
 				}
 				
 			} else { // next key is larger than the key to be added
-				throw new ShoeSizeNotFoundException();
+				return;
 			}
 		}
-		throw new ShoeSizeNotFoundException(); // if key is not found at the end of list
+		return; // if key is not found at the end of list
+	}
+	
+	/**
+	 * @return return a String list of all keys
+	 */
+	protected List<String> getKeyList() {
+		List<String> keyList = new ArrayList<String>();
+		Node current = head;
+		while (current.next != null) {
+			current = current.next;
+			double key = current.key;
+			if (key-(double)((int)key)==0) {
+				keyList.add(Integer.toString((int)key));
+			} else {
+				keyList.add(Double.toString(key));
+			}
+		}
+		return keyList;
+	}
+	
+	/**
+	 * @return return the value of a given key
+	 */
+	protected int get(double key) {
+		Node current = head;
+		while (current.next != null) { // traversal to the end of list
+			double compare = current.next.key-key;;
+			if (compare < 0) { // next key is small than the key to be added
+				current = current.next;
+			} else if (compare == 0) {
+				return current.next.value;
+			} else { // next key is larger than the key to be added
+				return 0;
+			}
+		}
+		return 0; // if key is not found at the end of list
 	}
 	
 	/**
@@ -117,9 +154,9 @@ class ShoeSizeList {
 			current = current.next;
 			double key = current.key;
 			if (key-(double)((int)key)==0) {
-				list += Integer.toString((int)current.key)+"("+Integer.toString(current.value)+") ";
+				list += Integer.toString((int)key)+"("+Integer.toString(current.value)+") ";
 			} else {
-				list += Double.toString(current.key)+"("+Integer.toString(current.value)+") ";
+				list += Double.toString(key)+"("+Integer.toString(current.value)+") ";
 			}
 			
 		}

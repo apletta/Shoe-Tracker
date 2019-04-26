@@ -8,6 +8,9 @@
  */
 package shoetable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ShoeTable implements ShoeTableADT{
 	
 	private HashArray<Integer, Shoe> shoeTable;
@@ -67,13 +70,12 @@ public class ShoeTable implements ShoeTableADT{
 	 * 
 	 * @param productNumber
 	 * @return a string of shoe size and quantity
-	 * @throws KeyNotFoundException 
 	 */
-	public String checkSize(int productNumber) throws KeyNotFoundException {
+	public String checkSize(int productNumber) {
 		try {
 			Shoe current = shoeTable.get(productNumber);
 			if (current == null) {
-				throw new KeyNotFoundException();
+				return "";
 			} else {
 				return current.shoeSizeList.traversal();
 			}
@@ -91,16 +93,12 @@ public class ShoeTable implements ShoeTableADT{
 	 * @param productNumber
 	 * @param shoeSize
 	 * @param quantity
-	 * @throws ShoeSizeNotFoundException 
-	 * @throws QuantityTooLargeException 
-	 * @throws KeyNotFoundException 
 	 */
-	public void deleteShoe(int productNumber, double shoeSize, int quantity) 
-			throws KeyNotFoundException, QuantityTooLargeException, ShoeSizeNotFoundException{
+	public void deleteShoe(int productNumber, double shoeSize, int quantity) {
 		try {
 			Shoe current = shoeTable.get(productNumber);
 			if (current == null) {
-				throw new KeyNotFoundException();
+				return;
 			} else {
 				current.shoeSizeList.decrease(shoeSize, quantity);
 				current.totalQuantity -= quantity;
@@ -109,6 +107,36 @@ public class ShoeTable implements ShoeTableADT{
 		} catch (IllegalNullKeyException e) {
 			
 		}
+	}
+	
+	/**
+	 * @return a String list of shoe sizes of given product number
+	 */
+	public List<String> getSizeList(int productNumber) {
+		try {
+			Shoe current = shoeTable.get(productNumber);
+			if (current != null) {
+				return current.shoeSizeList.getKeyList();
+			}
+		} catch (IllegalNullKeyException e) {
+			
+		}
+		return new ArrayList<String>();
+	}
+	
+	/**
+	 * @return the quantity of given product number and shoe size
+	 */
+	public int getQuantity(int productNumber, double shoeSize) {
+		try {
+			Shoe current = shoeTable.get(productNumber);
+			if (current != null) {
+				return current.shoeSizeList.get(shoeSize);
+			}
+		} catch (IllegalNullKeyException e) {
+			
+		}
+		return 0;
 	}
 
 }
