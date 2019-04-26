@@ -41,7 +41,7 @@ public interface ShoeTableADT {
 	 * @param productNumber
 	 * @return a string of shoe size and quantity
 	 */
-	public String checkSize(int productNumber);
+	public String checkSize();
 	
 	/**
 	 * decrease quantity from given shoe size
@@ -53,7 +53,7 @@ public interface ShoeTableADT {
 	 * @param shoeSize
 	 * @param quantity
 	 */
-	public void deleteShoe(int productNumber, double shoeSize, int quantity);
+	public void deleteShoe(double shoeSize, int quantity);
 	
 	/**
 	 * Note: elements in this list are String, when delete you may need to convert them into double
@@ -61,12 +61,12 @@ public interface ShoeTableADT {
 	 * 
 	 * @return a String list of shoe sizes of given product number
 	 */
-	public List<String> getSizeList(int productNumber);
+	public List<String> getSizeList();
 	
 	/**
 	 * @return the quantity of given product number and shoe size
 	 */
-	public int getQuantity(int productNumber, double shoeSize);
+	public int getQuantity(double shoeSize);
 	
 	
 }

@@ -8,7 +8,7 @@
  */
 package shoetable;
 
-class ShoeInfo {
+public class ShoeInfo {
 	
 	public int productNumber;
 	public String name;
