@@ -1,4 +1,3 @@
-package shoetable;
 /**
  * Filename:   HashArray.java
  * Project:    final
@@ -7,6 +6,7 @@ package shoetable;
  * 
  * Implementation of hash table
  */
+package shoetable;
 
 import java.util.ArrayList;
 

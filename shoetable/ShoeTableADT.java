@@ -1,4 +1,3 @@
-package shoetable;
 /**
  * Filename:   ShoeTableADT.java
  * Project:    final
@@ -7,6 +6,7 @@ package shoetable;
  * 
  * The ADT connected to GUI
  */
+package shoetable;
 
 public interface ShoeTableADT {
 

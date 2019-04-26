@@ -1,4 +1,3 @@
-package shoetable;
 /**
  * Filename:   ShoeInfo.java
  * Project:    final
@@ -7,6 +6,7 @@ package shoetable;
  * 
  * ShoeInfo class to store profuct number, shoe name, total quantity of shoe
  */
+package shoetable;
 
 class ShoeInfo {
 	

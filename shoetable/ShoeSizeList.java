@@ -1,4 +1,3 @@
-package shoetable;
 /**
  * Filename:   ShoeSizeList.java
  * Project:    final
@@ -7,6 +6,7 @@ package shoetable;
  * 
  * An ordered linked list to store shoe size and corresponding quantity
  */
+package shoetable;
 
 class ShoeSizeList {
 	

@@ -1,4 +1,3 @@
-package shoetable;
 /**
  * Filename:   ShoeTable.java
  * Project:    final
@@ -7,6 +6,7 @@ package shoetable;
  * 
  * A class implements all the methods in ShoeTableADT
  */
+package shoetable;
 
 public class ShoeTable implements ShoeTableADT{
 	

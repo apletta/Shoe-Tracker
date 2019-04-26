@@ -1,4 +1,3 @@
-package shoetable;
 /**
  * Filename:   Shoe.java
  * Project:    final
@@ -11,6 +10,7 @@ package shoetable;
  * P.S. the product number of shoe is the key of hash table, 
  * and class Shoe is the value of that key in hash table
  */
+package shoetable;
 
 class Shoe {
 	protected final String name;
