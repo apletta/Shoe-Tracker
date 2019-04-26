@@ -8,14 +8,6 @@ class Stock {
 class Main {
 	public static void main(String[] args) {
 		try {
-<<<<<<< HEAD
-		  
-		  Stock.shoeTable.addShoe(123456789, "Nike", 8.5, 5);
-		  Stock.shoeTable.addShoe(123456789, "Nike", 5.5, 3);
-		  Stock.shoeTable.addShoe(123456789, "Nike", 10.5, 6);
-		  Stock.shoeTable.deleteShoe(123456789, 8.5, 4);
-		  System.out.println(Stock.shoeTable.checkSize(123456789));
-=======
 			ShoeTableADT shoeTable = new ShoeTable();
 			shoeTable.addShoe(123456789, "Nike", 8.5, 5);
 			shoeTable.addShoe(123456789, "Nike", 8.5, 5);
@@ -50,7 +42,6 @@ class Main {
 			
 			System.out.println(shoeTable.getQuantity(9));
 			System.out.println(shoeTable.getQuantity(8));
->>>>>>> 4133d6b1e3454d2baffe91e68ae0568eee76acb3
 			
 		} catch(Exception e) {
 			System.out.println(e.getClass().getName());
