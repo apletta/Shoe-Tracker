@@ -80,7 +80,7 @@ class AddProductScreen {
       ButtonType addMore = new ButtonType("Add Another",ButtonBar.ButtonData.OTHER);
       
       Alert addedAlert = new Alert(AlertType.CONFIRMATION);
-      addedAlert.setContentText("Producted Sucessfully Added!");
+      addedAlert.setContentText("Product Sucessfully Added!");
       addedAlert.setHeaderText("");
 //      addedAlert.getButtonTypes().clear();
 //      addedAlert.getButtonTypes().addAll(goHome,addMore);
