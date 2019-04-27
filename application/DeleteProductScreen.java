@@ -1,6 +1,8 @@
 package application;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.*;
 import javafx.stage.*;
 import javafx.scene.*;
@@ -9,6 +11,7 @@ import javafx.scene.shape.*;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
 import javafx.scene.text.*;
+import java.util.List;
 
 import application.TopArea.*;
 
@@ -25,33 +28,52 @@ class DeleteProductScreen {
 	  pane.setVgap(5);
 	  pane.setPadding(new Insets(10,10,10,10));
 	  
-	  Text txt = new Text("Size");
+	  Text txt = new Text("Available Sizes");
 	  txt.setStyle("-fx-font-weight: bold");
 	  GridPane.setConstraints(txt, 0, 0);
 	  pane.setAlignment(Pos.CENTER);
 	  
 	  HBox box = new HBox(9);
-	  for(double i = 9; i < 13; i = i + 0.5) {
-	    Button newButt = new Button(i+"");
-	    newButt.setAlignment(Pos.CENTER);
-	    newButt.setId("");
-	    box.getChildren().add(newButt);
+	  List<String> availableSizes = Stock.shoeTable.getSizeList();
+	  double userSize = 0.0;
+	  for(int i = 0; i < availableSizes.size(); i++) {
+	       Button newButt = new Button(availableSizes.get(i));
+	       newButt.setAlignment(Pos.CENTER);
+	       box.getChildren().add(newButt);
+	       newButt.setOnAction(new EventHandler<ActionEvent>() {
+            double userSize =0;
+            @Override
+            public void handle(ActionEvent event) {
+              //userSize = Double.parseDouble(newButt.getText().toString());
+            }
+          });
 	  }
+	  
 	  box.setAlignment(Pos.CENTER);
 	  GridPane.setConstraints(box, 0, 1);
 	  pane.getChildren().addAll(txt,box);
 	  
 	  HBox hbox = new HBox(1);
 	  ComboBox<Integer> combo = new ComboBox<>();
-	  combo.setId("Quan");
-      for(int i = 1; i < 11; i++) {
-        combo.getItems().add(i);
-      }
+//      for(availableSizes) {
+//        combo.getItems().add(i);
+//      }
       
       Button button = new Button("DELETE");
       button.setAlignment(Pos.CENTER);
       hbox.setAlignment(Pos.CENTER);
       hbox.getChildren().addAll(combo,button);
+      
+      button.setOnAction(new EventHandler<ActionEvent>() {
+        
+        @Override
+        public void handle(ActionEvent e) {
+          //Node userSize = box.getChildren();
+          //int userQuantity = combo.getValue();
+          //Stock.shoeTable.deleteShoe(shoeSize, userQuantity);
+          
+        }
+      });
       
       VBox vbox = new VBox(15);
       vbox.setAlignment(Pos.CENTER);

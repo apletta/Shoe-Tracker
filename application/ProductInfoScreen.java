@@ -11,6 +11,7 @@ import javafx.scene.shape.*;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
 import javafx.scene.text.*;
+import java.util.List;
 
 import application.TopArea.*;
 
@@ -31,21 +32,21 @@ class ProductInfoScreen {
 	  GridPane.setConstraints(prodNum, 0, 0);
 	  prodNum.setId("text");
 	  
-	  Text displayNum = new Text("This is the product num");
+	  Text displayNum = new Text(CurrentShoeInfo.currentShoe.productNumber+"");
 	  displayNum.setId("text2");
 	  GridPane.setConstraints(displayNum, 1, 0);
 	  
 	  Text name = new Text("Name:");
 	  GridPane.setConstraints(name, 0, 1);
 	  name.setId("text");
-	  Text displayName = new Text("This is the product name");
+	  Text displayName = new Text(CurrentShoeInfo.currentShoe.name);
 	  displayName.setId("text2");
 	  GridPane.setConstraints(displayName, 1, 1);
 	  
 	  Text amountInStock = new Text("Amount in Stock:");
 	  GridPane.setConstraints(amountInStock, 0, 2);
 	  amountInStock.setId("text");
-	  Text displayStock = new Text("This is the amount in stock");
+	  Text displayStock = new Text(CurrentShoeInfo.currentShoe.totalQuantity+"");
 	  displayStock.setId("text2");
 	  GridPane.setConstraints(displayStock, 1, 2);
 	  
@@ -61,6 +62,8 @@ class ProductInfoScreen {
 	  checkSize.setAlignment(Pos.CENTER);
 	  Button delete = new Button("Delete Product(s)");
 	  delete.setAlignment(Pos.CENTER);
+	  
+
 
 		// delete actions
 		delete.setOnAction(new EventHandler<ActionEvent>() {
@@ -81,6 +84,28 @@ class ProductInfoScreen {
 	  VBox vbox = new VBox(15);
 	  vbox.setAlignment(Pos.CENTER);
 	  vbox.getChildren().addAll(delete, checkSize);
+	  
+	   checkSize.setOnAction(new EventHandler<ActionEvent>() {
+	        
+	        @Override
+	        public void handle(ActionEvent event) {
+	          //List of sizes and availability
+	          String sizes = Stock.shoeTable.checkSize();
+
+              checkSize.setVisible(false);
+              delete.setVisible(false);
+              
+              Label sizeLabel = new Label("Sizes In Stock");
+              sizeLabel.setUnderline(true);
+              Text displaySizes = new Text(sizes);
+              displaySizes.setId("text");
+              //Clears the box so that the list of available sizes are
+              //Just shown
+              vbox.getChildren().clear();
+              //Adds the label and displaySizes to scene
+              vbox.getChildren().addAll(sizeLabel, displaySizes);
+	        }
+	      });
 	  
 	  BorderPane.setAlignment(delete, Pos.BOTTOM_LEFT);
 	  delete.setAlignment(Pos.CENTER);

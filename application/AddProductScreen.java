@@ -9,19 +9,20 @@ import javafx.scene.*;
 import javafx.scene.layout.*;
 import javafx.scene.shape.*;
 import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.*;
 import javafx.scene.text.*;
-
+import java.util.Optional;
 import application.TopArea.*;
 
 class AddProductScreen {
 	
       protected static BorderPane screen() {
         
-      int userProdNum;
-      String userProdName;
-      Double userProdSize;
-      int userQuantity;
+//      int userProdNum;
+//      String userProdName;
+//      Double userProdSize;
+//      int userQuantity;
         
       GridPane gridPane = new GridPane();
       gridPane.setHgap(10);
@@ -34,8 +35,6 @@ class AddProductScreen {
       TextField prodNum = new TextField();
       GridPane.setConstraints(prodNum, 1, 0);
       
-      //userProdNum = Integer.parseInt(prodNum.getText()); //GRABS INPUT FROM USER
-      
       
       Text enterProdName = new Text("Enter Product Name:");
       enterProdName.setId("text");
@@ -43,7 +42,7 @@ class AddProductScreen {
       TextField prodName = new TextField();
       GridPane.setConstraints(prodName, 1, 1);
       
-      //userProdName = prodName.getText(); //GRABS INPUT FROM USER
+
       
       Text enterSize = new Text("Enter Size:");
       enterSize.setId("text");
@@ -54,7 +53,6 @@ class AddProductScreen {
           }
       GridPane.setConstraints(size, 1, 2);
       
-      //userProdSize = size.getValue(); //GRABS INPUT FROM USER
       
       
       Text quantity = new Text("Quantity:");
@@ -65,13 +63,44 @@ class AddProductScreen {
           prodQuan.getItems().add(i);
         }
       GridPane.setConstraints(prodQuan, 1, 3);
-      
-      //userQuantity = prodQuan.getValue(); //GRABS INPUT FROM USER
+
       
       Button addButton = new Button("Add");
       addButton.setPrefSize(100, 5);
       GridPane.setConstraints(addButton, 1, 9);
       GridPane.setHalignment(addButton, HPos.RIGHT);
+      
+      Alert errorAlert = new Alert(AlertType.ERROR);
+      errorAlert.setContentText("1. Fill out ALL Fields\n"
+          + "2. Please enter positive integers only, max length\n "
+          + "   10 digits");
+      errorAlert.setHeaderText("Error!");
+      
+      ButtonType goHome = new ButtonType("Return Home",ButtonBar.ButtonData.OK_DONE);
+      ButtonType addMore = new ButtonType("Add Another",ButtonBar.ButtonData.OTHER);
+      
+      Alert addedAlert = new Alert(AlertType.CONFIRMATION);
+      addedAlert.setContentText("Producted Sucessfully Added!");
+      addedAlert.setHeaderText("");
+//      addedAlert.getButtonTypes().clear();
+//      addedAlert.getButtonTypes().addAll(goHome,addMore);
+      
+      
+      addButton.setOnAction(new EventHandler<ActionEvent>() {
+        public void handle(ActionEvent event) {
+          try {
+            int userProdNum = Integer.parseInt(prodNum.getText()); //GRABS INPUT FROM USER
+            String userProdName = prodName.getText().trim(); //GRABS INPUT FROM USER
+            double userProdSize = size.getValue(); //GRABS INPUT FROM USER
+            int userQuantity = prodQuan.getValue(); //GRABS INPUT FROM USER
+            Stock.shoeTable.addShoe(userProdNum, userProdName, userProdSize, userQuantity);
+            addedAlert.show();
+          }
+          catch(Exception e) {
+            errorAlert.show();
+          }
+        }
+      });
       
       gridPane.setAlignment(Pos.CENTER);
       gridPane.getChildren().addAll(enterProdName,enterProdNum, enterSize, quantity,
