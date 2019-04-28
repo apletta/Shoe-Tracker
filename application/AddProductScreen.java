@@ -74,14 +74,14 @@ class AddProductScreen {
       errorAlert.setContentText("1. Fill out ALL Fields\n"
           + "2. Please enter positive integers only, max length\n "
           + "   10 digits");
-      errorAlert.setHeaderText("Error!");
+      errorAlert.setHeaderText(null);
       
       ButtonType goHome = new ButtonType("Return Home",ButtonBar.ButtonData.OK_DONE);
       ButtonType addMore = new ButtonType("Add Another",ButtonBar.ButtonData.OTHER);
       
       Alert addedAlert = new Alert(AlertType.CONFIRMATION);
       addedAlert.setContentText("Product Sucessfully Added!");
-      addedAlert.setHeaderText("");
+      addedAlert.setHeaderText(null);
 //      addedAlert.getButtonTypes().clear();
 //      addedAlert.getButtonTypes().addAll(goHome,addMore);
       

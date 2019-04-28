@@ -86,6 +86,7 @@ class LookupScreen {
 				//shoe does not exist in table
 				catch (KeyNotFoundException e) {
 				  Alert warning = new Alert(AlertType.ERROR);
+				  warning.setHeaderText(null);
 				  warning.setContentText("The product you wish to search for"
 				      + " does not exist. Try again.");
 				  warning.show();

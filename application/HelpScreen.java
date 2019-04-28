@@ -18,7 +18,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class HelpScreen {
+class HelpScreen {
   protected static BorderPane screen() {
     GridPane pane = new GridPane();
     pane.setHgap(10);
