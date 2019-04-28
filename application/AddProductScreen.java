@@ -76,15 +76,14 @@ class AddProductScreen {
           + "   10 digits");
       errorAlert.setHeaderText(null);
       
-      ButtonType goHome = new ButtonType("Return Home",ButtonBar.ButtonData.OK_DONE);
-      ButtonType addMore = new ButtonType("Add Another",ButtonBar.ButtonData.OTHER);
+      ButtonType goHome = new ButtonType("Return Home",ButtonBar.ButtonData.FINISH);
+      ButtonType addMore = new ButtonType("Add Another",ButtonBar.ButtonData.BACK_PREVIOUS);
       
       Alert addedAlert = new Alert(AlertType.CONFIRMATION);
       addedAlert.setContentText("Product Sucessfully Added!");
       addedAlert.setHeaderText(null);
-//      addedAlert.getButtonTypes().clear();
-//      addedAlert.getButtonTypes().addAll(goHome,addMore);
-      
+      addedAlert.getButtonTypes().clear();
+      addedAlert.getButtonTypes().addAll(goHome,addMore);
       
       addButton.setOnAction(new EventHandler<ActionEvent>() {
         public void handle(ActionEvent event) {
@@ -94,7 +93,29 @@ class AddProductScreen {
             double userProdSize = size.getValue(); //GRABS INPUT FROM USER
             int userQuantity = prodQuan.getValue(); //GRABS INPUT FROM USER
             Stock.shoeTable.addShoe(userProdNum, userProdName, userProdSize, userQuantity);
-            addedAlert.show();
+
+            //Code Reference:
+            //https://www.programcreek.com/java-api-examples/?api=javafx.scene.control.ButtonType
+            Optional<ButtonType> result = addedAlert.showAndWait();
+            if(result.get() == goHome) {
+              System.out.println("Button Clicked");
+              Stage stage = new Stage();
+              Scene scene = new Scene(HomeScreen.screen(), 1600, 900);
+              scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+              stage.setTitle("Sole Table");
+              stage.setScene(scene);
+              stage.show();
+              
+              //Closes and hides current window
+              //https://stackoverflow.com/questions/15041760/javafx-open-new-window
+              ((Node)(event.getSource())).getScene().getWindow().hide();
+            }
+            else if(result.get() == addMore) {
+              prodNum.clear();
+              prodName.clear();
+              size.getSelectionModel().clearSelection();
+              prodQuan.getSelectionModel().clearSelection();
+            }
           }
           catch(Exception e) {
             errorAlert.show();
