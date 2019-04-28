@@ -151,7 +151,7 @@ class DeleteProductScreen {
             
             Optional<ButtonType> newResult = addedAlert.showAndWait();
             if(newResult.get() == goHome) {
-              System.out.println("Button Clicked");
+              //System.out.println("Button Clicked");
               Stage stage = new Stage();
               Scene scene = new Scene(HomeScreen.screen(), 1600, 900);
               scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());

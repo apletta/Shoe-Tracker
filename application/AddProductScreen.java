@@ -98,7 +98,7 @@ class AddProductScreen {
             //https://www.programcreek.com/java-api-examples/?api=javafx.scene.control.ButtonType
             Optional<ButtonType> result = addedAlert.showAndWait();
             if(result.get() == goHome) {
-              System.out.println("Button Clicked");
+              //System.out.println("Button Clicked");
               Stage stage = new Stage();
               Scene scene = new Scene(HomeScreen.screen(), 1600, 900);
               scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
