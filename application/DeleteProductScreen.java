@@ -111,7 +111,7 @@ class DeleteProductScreen {
             // to delete from the stock
             if (list.get(j).contains(newButt.getText())) {
               // As explained about, this gets rid of "6.5"
-              quan = list.get(j).replaceAll(newButt.getText(), "");
+              quan = list.get(j).replaceFirst(newButt.getText(), "");
               // Gets rid of "("
               quan = quan.replace("(", "");
               // Gets rid of ")" and only leaves the number

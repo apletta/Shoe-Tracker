@@ -72,22 +72,22 @@ class AddProductScreen {
       GridPane.setConstraints(addButton, 1, 9);
       GridPane.setHalignment(addButton, HPos.RIGHT);
       
-      //BUTTON SHADOW
-      DropShadow shadow = new DropShadow();
-      // add shadow
-      addButton.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
-        @Override
-        public void handle(MouseEvent e) {
-          addButton.setEffect(shadow);
-        }
-      });
-      // remove shadow
-      addButton.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
-        @Override
-        public void handle(MouseEvent e) {
-          addButton.setEffect(null);
-        }
-      });
+//      //BUTTON SHADOW
+//      DropShadow shadow = new DropShadow();
+//      // add shadow
+//      addButton.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+//        @Override
+//        public void handle(MouseEvent e) {
+//          addButton.setEffect(shadow);
+//        }
+//      });
+//      // remove shadow
+//      addButton.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
+//        @Override
+//        public void handle(MouseEvent e) {
+//          addButton.setEffect(null);
+//        }
+//      });
       
       Alert errorAlert = new Alert(AlertType.ERROR);
       errorAlert.setContentText("1. Fill out ALL Fields\n"

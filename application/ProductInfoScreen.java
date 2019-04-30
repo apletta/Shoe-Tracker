@@ -63,36 +63,36 @@ class ProductInfoScreen {
     Button delete = new Button("Delete Product(s)");
     delete.setAlignment(Pos.CENTER);
 
-    // ADD SHADOWS
-    DropShadow shadow = new DropShadow();
-    // add shadow
-    checkSize.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
-      @Override
-      public void handle(MouseEvent e) {
-        checkSize.setEffect(shadow);
-      }
-    });
-    // remove shadow
-    checkSize.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
-      @Override
-      public void handle(MouseEvent e) {
-        checkSize.setEffect(null);
-      }
-    });
-
-    delete.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
-      @Override
-      public void handle(MouseEvent e) {
-        delete.setEffect(shadow);
-      }
-    });
-    // remove shadow
-    delete.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
-      @Override
-      public void handle(MouseEvent e) {
-        delete.setEffect(null);
-      }
-    });
+//    // ADD SHADOWS
+//    DropShadow shadow = new DropShadow();
+//    // add shadow
+//    checkSize.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+//      @Override
+//      public void handle(MouseEvent e) {
+//        checkSize.setEffect(shadow);
+//      }
+//    });
+//    // remove shadow
+//    checkSize.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
+//      @Override
+//      public void handle(MouseEvent e) {
+//        checkSize.setEffect(null);
+//      }
+//    });
+//
+//    delete.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+//      @Override
+//      public void handle(MouseEvent e) {
+//        delete.setEffect(shadow);
+//      }
+//    });
+//    // remove shadow
+//    delete.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
+//      @Override
+//      public void handle(MouseEvent e) {
+//        delete.setEffect(null);
+//      }
+//    });
 
 
     // delete actions

@@ -26,34 +26,34 @@ class HomeScreen {
     lookupProduct.setPrefSize(300, 100);
 
     // ADD BUTTON SHADOW
-    DropShadow shadow = new DropShadow();
-    // add shadow
-    lookupProduct.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
-      @Override
-      public void handle(MouseEvent e) {
-        lookupProduct.setEffect(shadow);
-      }
-    });
-    // remove shadow
-    lookupProduct.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
-      @Override
-      public void handle(MouseEvent e) {
-        lookupProduct.setEffect(null);
-      }
-    });
-    addProduct.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
-      @Override
-      public void handle(MouseEvent e) {
-        addProduct.setEffect(shadow);
-      }
-    });
-    // remove shadow
-    addProduct.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
-      @Override
-      public void handle(MouseEvent e) {
-        addProduct.setEffect(null);
-      }
-    });
+//    DropShadow shadow = new DropShadow();
+//    // add shadow
+//    lookupProduct.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+//      @Override
+//      public void handle(MouseEvent e) {
+//        lookupProduct.setEffect(shadow);
+//      }
+//    });
+//    // remove shadow
+//    lookupProduct.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
+//      @Override
+//      public void handle(MouseEvent e) {
+//        lookupProduct.setEffect(null);
+//      }
+//    });
+//    addProduct.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+//      @Override
+//      public void handle(MouseEvent e) {
+//        addProduct.setEffect(shadow);
+//      }
+//    });
+//    // remove shadow
+//    addProduct.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
+//      @Override
+//      public void handle(MouseEvent e) {
+//        addProduct.setEffect(null);
+//      }
+//    });
 
     // lookupProduct actions
     lookupProduct.setOnAction(new EventHandler<ActionEvent>() {
