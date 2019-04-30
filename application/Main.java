@@ -23,7 +23,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-	        Scene scene = new Scene(HomeScreen.screen(),1600,900);
+	        Scene scene = new Scene(DeleteProductScreen.screen(),1600,900);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setTitle("Sole Table");
 			primaryStage.setScene(scene);
