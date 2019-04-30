@@ -10,7 +10,9 @@ import javafx.scene.layout.*;
 import javafx.scene.shape.*;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.*;
 import java.util.Optional;
 import application.TopArea.*;
@@ -69,6 +71,23 @@ class AddProductScreen {
       addButton.setPrefSize(100, 5);
       GridPane.setConstraints(addButton, 1, 9);
       GridPane.setHalignment(addButton, HPos.RIGHT);
+      
+      //BUTTON SHADOW
+      DropShadow shadow = new DropShadow();
+      // add shadow
+      addButton.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+        @Override
+        public void handle(MouseEvent e) {
+          addButton.setEffect(shadow);
+        }
+      });
+      // remove shadow
+      addButton.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
+        @Override
+        public void handle(MouseEvent e) {
+          addButton.setEffect(null);
+        }
+      });
       
       Alert errorAlert = new Alert(AlertType.ERROR);
       errorAlert.setContentText("1. Fill out ALL Fields\n"

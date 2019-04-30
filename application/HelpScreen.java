@@ -9,8 +9,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Labeled;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -37,6 +39,23 @@ class HelpScreen {
     Button lookupProduct = new Button("Submit");
     lookupProduct.setPrefSize(300, 50);
     lookupProduct.setAlignment(Pos.CENTER);
+    
+    //Button shadow
+    DropShadow shadow = new DropShadow();
+    // add button
+    lookupProduct.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+      @Override
+      public void handle(MouseEvent e) {
+        lookupProduct.setEffect(shadow);
+      }
+    });
+    // remove shadow
+    lookupProduct.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
+      @Override
+      public void handle(MouseEvent e) {
+        lookupProduct.setEffect(null);
+      }
+    });
 
     // submit button action
     lookupProduct.setOnAction(new EventHandler<ActionEvent>() {

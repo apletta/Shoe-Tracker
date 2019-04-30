@@ -10,7 +10,9 @@ import javafx.scene.layout.*;
 import javafx.scene.shape.*;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.*;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -45,6 +47,23 @@ class LookupScreen {
 		Button lookupProduct = new Button("Lookup Product");
 		lookupProduct.setPrefSize(300, 50);
 		lookupProduct.setAlignment(Pos.CENTER);
+		
+		//BUTTON SHADOW
+		DropShadow shadow = new DropShadow();
+	    // add shadow
+	    lookupProduct.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+	      @Override
+	      public void handle(MouseEvent e) {
+	        lookupProduct.setEffect(shadow);
+	      }
+	    });
+	    // remove shadow
+	    lookupProduct.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
+	      @Override
+	      public void handle(MouseEvent e) {
+	        lookupProduct.setEffect(null);
+	      }
+	    });
 
 		// lookupProduct actions
 		lookupProduct.setOnAction(new EventHandler<ActionEvent>() {
