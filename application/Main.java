@@ -26,10 +26,6 @@ public class Main extends Application {
 	        Scene scene = new Scene(HomeScreen.screen(),1600,900);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setTitle("Sole Table");
-			// test test test
-			
-			// testing stash
-			
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
