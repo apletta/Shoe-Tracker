@@ -104,6 +104,7 @@ class ProductInfoScreen {
         vbox.getChildren().clear();
         // Adds the label and displaySizes to scene
         vbox.getChildren().addAll(sizeLabel, displaySizes);
+        
       }
     });
 
