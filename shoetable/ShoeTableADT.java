@@ -10,6 +10,8 @@ package shoetable;
 
 import java.util.List;
 
+import javafx.scene.image.Image;
+
 public interface ShoeTableADT {
 
 	/**
@@ -22,6 +24,19 @@ public interface ShoeTableADT {
 	 * @param quantity
 	 */
 	public void addShoe(int productNumber, String name, double shoeSize, int quantity);
+	
+	/**
+	 * if productNumber already exits, add shoeSize and quantity to that Shoe class
+	 * if productNumber does not exit, construct a new Shoe class
+	 * add image to shoe class
+	 * 
+	 * @param productNumber
+	 * @param name
+	 * @param shoeSize
+	 * @param quantity
+	 */
+	public void addShoe(int productNumber, String name, double shoeSize, int quantity, Image image);
+  
   
 	/**
 	 * lookup shoe information from a given productNumber
@@ -35,7 +50,7 @@ public interface ShoeTableADT {
   
 	/**
 	 * check quantity of every shoe size
-	 * return a string, e.g. ¡°7.5(3) 9.5(8) 10(4) 10.5(2)¡±
+	 * return a string, e.g. ï¿½ï¿½7.5(3) 9.5(8) 10(4) 10.5(2)ï¿½ï¿½
 	 * if product does not exit, throw KeyNotFoundException
 	 * 
 	 * @param productNumber

@@ -17,6 +17,7 @@ import javafx.scene.text.*;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Optional;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -110,17 +111,18 @@ class AddProductScreen {
       addedAlert.getButtonTypes().addAll(goHome,addMore);
       
       FileChooser fileChooser = new FileChooser();
-      fileChooser.setTitle("Open Resource File");      
-      
+      fileChooser.setTitle("Open Resource File");   
+     
+      ArrayList<Image> imageArray = new ArrayList<Image>();
       loadImageButton.setOnAction(e -> {
           Stage stage = new Stage();
           File file = fileChooser.showOpenDialog(stage);
           if (file != null) {
+        	  loadImageButton.setText("Image added");
               Image shoeImage = new Image(file.toURI().toString());
-              System.out.println(shoeImage);
+              imageArray.add(shoeImage);
           }
       });
-      
       
       addButton.setOnAction(new EventHandler<ActionEvent>() {
         public void handle(ActionEvent event) {
@@ -129,8 +131,11 @@ class AddProductScreen {
             String userProdName = prodName.getText().trim(); //GRABS INPUT FROM USER
             double userProdSize = size.getValue(); //GRABS INPUT FROM USER
             int userQuantity = prodQuan.getValue(); //GRABS INPUT FROM USER
-            Stock.shoeTable.addShoe(userProdNum, userProdName, userProdSize, userQuantity);
-
+            Image userImage = imageArray.get(0);
+            System.out.println("userImage: "+userImage);
+            // Stock.shoeTable.addShoe(userProdNum, userProdName, userProdSize, userQuantity);
+            Stock.shoeTable.addShoe(userProdNum, userProdName, userProdSize, userQuantity, userImage);
+   
             //Code Reference:
             //https://www.programcreek.com/java-api-examples/?api=javafx.scene.control.ButtonType
             Optional<ButtonType> result = addedAlert.showAndWait();

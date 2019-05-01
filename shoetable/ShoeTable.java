@@ -11,6 +11,8 @@ package shoetable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.scene.image.Image;
+
 public class ShoeTable implements ShoeTableADT{
 	
 	private HashArray<Integer, Shoe> shoeTable;
@@ -43,6 +45,31 @@ public class ShoeTable implements ShoeTableADT{
 			
 		}
 	}
+	
+	/**
+	 * Overloaded addShoe constructor to allow for adding image to Shoe.java object
+	 * 
+	 * @param productNumber
+	 * @param name
+	 * @param shoeSize
+	 * @param quantity
+	 * @param image
+	 */
+	public void addShoe(int productNumber, String name, double shoeSize, int quantity, Image image) {
+		try {
+			Shoe current = shoeTable.get(productNumber);
+			if (current == null) {
+				current = new Shoe(name, image);
+				shoeTable.insert(productNumber, current);
+			}
+			current.shoeSizeList.add(shoeSize, quantity);
+			current.totalQuantity += quantity;
+		} catch (Exception e) {
+			
+		}
+	}
+	
+	
   
 	/**
 	 * lookup shoe information from a given productNumber
@@ -57,7 +84,11 @@ public class ShoeTable implements ShoeTableADT{
 			Shoe current = shoeTable.get(productNumber);
 			if (current == null) {
 				throw new KeyNotFoundException();
-			} else {
+			} else if(current.image != null) { // if shoe has an image linked to it, pull up ShoeInfo with image
+				this.shoe = current;
+				return new ShoeInfo(productNumber, current.name, current.totalQuantity, current.image);
+			}
+			else {
 				this.shoe = current;
 				return new ShoeInfo(productNumber, current.name, current.totalQuantity);
 			}
@@ -68,7 +99,7 @@ public class ShoeTable implements ShoeTableADT{
   
 	/**
 	 * check quantity of every shoe size
-	 * return a string, e.g. ¡°7.5(3) 9.5(8) 10(4) 10.5(2)¡±
+	 * return a string, e.g. ï¿½ï¿½7.5(3) 9.5(8) 10(4) 10.5(2)ï¿½ï¿½
 	 * if product does not exit, throw KeyNotFoundException
 	 * 
 	 * @return a string of shoe size and quantity
