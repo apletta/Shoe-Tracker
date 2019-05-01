@@ -47,23 +47,6 @@ class LookupScreen {
 		Button lookupProduct = new Button("Lookup Product");
 		lookupProduct.setPrefSize(300, 50);
 		lookupProduct.setAlignment(Pos.CENTER);
-		
-//		//BUTTON SHADOW
-//		DropShadow shadow = new DropShadow();
-//	    // add shadow
-//	    lookupProduct.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
-//	      @Override
-//	      public void handle(MouseEvent e) {
-//	        lookupProduct.setEffect(shadow);
-//	      }
-//	    });
-//	    // remove shadow
-//	    lookupProduct.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
-//	      @Override
-//	      public void handle(MouseEvent e) {
-//	        lookupProduct.setEffect(null);
-//	      }
-//	    });
 
 		// lookupProduct actions
 		lookupProduct.setOnAction(new EventHandler<ActionEvent>() {
@@ -93,7 +76,7 @@ class LookupScreen {
 					scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 					stage.setTitle("Sole Table");
 					stage.setScene(scene);
-					//stage.hide();
+					stage.hide();
 					stage.show();
 					
 				} catch (NumberFormatException e) {

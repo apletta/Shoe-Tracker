@@ -14,7 +14,14 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.image.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.*;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Optional;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import application.TopArea.*;
 
 class AddProductScreen {
@@ -71,23 +78,6 @@ class AddProductScreen {
       addButton.setPrefSize(100, 5);
       GridPane.setConstraints(addButton, 1, 9);
       GridPane.setHalignment(addButton, HPos.RIGHT);
-      
-//      //BUTTON SHADOW
-//      DropShadow shadow = new DropShadow();
-//      // add shadow
-//      addButton.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
-//        @Override
-//        public void handle(MouseEvent e) {
-//          addButton.setEffect(shadow);
-//        }
-//      });
-//      // remove shadow
-//      addButton.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
-//        @Override
-//        public void handle(MouseEvent e) {
-//          addButton.setEffect(null);
-//        }
-//      });
       
       Alert errorAlert = new Alert(AlertType.ERROR);
       errorAlert.setContentText("1. Fill out ALL Fields\n"
@@ -152,6 +142,28 @@ class AddProductScreen {
       screen.setTop(TopArea.topArea("Add Product"));
       
       return screen;
+      }
+      
+      public void addFromFile(String jsonFilepath)
+          throws FileNotFoundException, IOException, ParseException {
+        // Creates and instantiates a new JSONParser
+        Object obj = new JSONParser().parse(new FileReader(jsonFilepath));
+        // Creates a new object from parsing
+        JSONObject parseMe = (JSONObject) obj;
+        // Creates a new array from the "shoes" field of the json file
+        JSONArray shoes = (JSONArray) parseMe.get("shoes");
+        // For-loop that iterates through the packages array
+        for (int i = 0; i < shoes.size(); ++i) {
+          // Gets the current package from json array ("packages")
+          JSONObject jsonShoes = (JSONObject) shoes.get(i);
+          // The current package name from the json array
+          int prodNum = (int) jsonShoes.get("productNum");
+          String prodName = (String) jsonShoes.get("productName");
+          double size = (double) jsonShoes.get("size");
+          int quantity = (int) jsonShoes.get("quantity");
+          // Adds shipment to the stock
+          Stock.shoeTable.addShoe(prodNum, prodName, size, quantity);
+        }
       }
 
 }
