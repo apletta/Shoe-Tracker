@@ -14,7 +14,14 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.image.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.*;
+
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import application.TopArea.*;
 
 class AddProductScreen {
@@ -72,6 +79,11 @@ class AddProductScreen {
       GridPane.setConstraints(addButton, 1, 9);
       GridPane.setHalignment(addButton, HPos.RIGHT);
       
+      Button loadImageButton = new Button("Load Image...");
+      loadImageButton.setPrefSize(200, 5);
+      GridPane.setConstraints(loadImageButton, 0, 4);
+      GridPane.setHalignment(loadImageButton, HPos.RIGHT);
+      
 //      //BUTTON SHADOW
 //      DropShadow shadow = new DropShadow();
 //      // add shadow
@@ -103,6 +115,19 @@ class AddProductScreen {
       addedAlert.setHeaderText(null);
       addedAlert.getButtonTypes().clear();
       addedAlert.getButtonTypes().addAll(goHome,addMore);
+      
+      FileChooser fileChooser = new FileChooser();
+      fileChooser.setTitle("Open Resource File");      
+      
+      loadImageButton.setOnAction(e -> {
+          Stage stage = new Stage();
+          File file = fileChooser.showOpenDialog(stage);
+          if (file != null) {
+              Image shoeImage = new Image(file.toURI().toString());
+              System.out.println(shoeImage);
+          }
+      });
+      
       
       addButton.setOnAction(new EventHandler<ActionEvent>() {
         public void handle(ActionEvent event) {
@@ -144,7 +169,7 @@ class AddProductScreen {
       
       gridPane.setAlignment(Pos.CENTER);
       gridPane.getChildren().addAll(enterProdName,enterProdNum, enterSize, quantity,
-          prodNum,prodName,size,prodQuan, addButton);      
+          prodNum,prodName,size,prodQuan, addButton, loadImageButton);      
 
       BorderPane.setAlignment(gridPane, Pos.CENTER);
       BorderPane screen = new BorderPane();
@@ -152,6 +177,18 @@ class AddProductScreen {
       screen.setTop(TopArea.topArea("Add Product"));
       
       return screen;
+      }
+      
+      private static void openFile(File file) {
+          try {
+        	Desktop desktop = Desktop.getDesktop();
+			desktop.open(file);
+          } catch (IOException ex) {
+              Logger.getLogger(
+                  FileChooser.class.getName()).log(
+                      Level.SEVERE, null, ex
+                  );
+          }
       }
 
 }
