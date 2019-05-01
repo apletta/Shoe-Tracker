@@ -132,7 +132,6 @@ class AddProductScreen {
             double userProdSize = size.getValue(); //GRABS INPUT FROM USER
             int userQuantity = prodQuan.getValue(); //GRABS INPUT FROM USER
             Image userImage = imageArray.get(0);
-            System.out.println("userImage: "+userImage);
             // Stock.shoeTable.addShoe(userProdNum, userProdName, userProdSize, userQuantity);
             Stock.shoeTable.addShoe(userProdNum, userProdName, userProdSize, userQuantity, userImage);
    
