@@ -22,6 +22,15 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
+import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
 import application.TopArea.*;
 
 class AddProductScreen {
@@ -79,6 +88,12 @@ class AddProductScreen {
       GridPane.setConstraints(addButton, 1, 9);
       GridPane.setHalignment(addButton, HPos.RIGHT);
       
+
+      Button loadImageButton = new Button("Load Image...");
+      loadImageButton.setPrefSize(200, 5);
+      GridPane.setConstraints(loadImageButton, 0, 4);
+      GridPane.setHalignment(loadImageButton, HPos.RIGHT);
+      
       Alert errorAlert = new Alert(AlertType.ERROR);
       errorAlert.setContentText("1. Fill out ALL Fields\n"
           + "2. Please enter positive integers only, max length\n "
@@ -93,6 +108,19 @@ class AddProductScreen {
       addedAlert.setHeaderText(null);
       addedAlert.getButtonTypes().clear();
       addedAlert.getButtonTypes().addAll(goHome,addMore);
+      
+      FileChooser fileChooser = new FileChooser();
+      fileChooser.setTitle("Open Resource File");      
+      
+      loadImageButton.setOnAction(e -> {
+          Stage stage = new Stage();
+          File file = fileChooser.showOpenDialog(stage);
+          if (file != null) {
+              Image shoeImage = new Image(file.toURI().toString());
+              System.out.println(shoeImage);
+          }
+      });
+      
       
       addButton.setOnAction(new EventHandler<ActionEvent>() {
         public void handle(ActionEvent event) {
@@ -134,7 +162,7 @@ class AddProductScreen {
       
       gridPane.setAlignment(Pos.CENTER);
       gridPane.getChildren().addAll(enterProdName,enterProdNum, enterSize, quantity,
-          prodNum,prodName,size,prodQuan, addButton);      
+          prodNum,prodName,size,prodQuan, addButton, loadImageButton);      
 
       BorderPane.setAlignment(gridPane, Pos.CENTER);
       BorderPane screen = new BorderPane();
@@ -144,6 +172,7 @@ class AddProductScreen {
       return screen;
       }
       
+
       public void addFromFile(String jsonFilepath)
           throws FileNotFoundException, IOException, ParseException {
         // Creates and instantiates a new JSONParser
@@ -164,6 +193,20 @@ class AddProductScreen {
           // Adds shipment to the stock
           Stock.shoeTable.addShoe(prodNum, prodName, size, quantity);
         }
+        
+      }
+
+      private static void openFile(File file) {
+          try {
+        	Desktop desktop = Desktop.getDesktop();
+			desktop.open(file);
+          } catch (IOException ex) {
+              Logger.getLogger(
+                  FileChooser.class.getName()).log(
+                      Level.SEVERE, null, ex
+                  );
+          }
+
       }
 
 }
