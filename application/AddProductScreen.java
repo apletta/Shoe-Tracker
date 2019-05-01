@@ -92,7 +92,12 @@ class AddProductScreen {
       Button loadImageButton = new Button("Load Image...");
       loadImageButton.setPrefSize(200, 5);
       GridPane.setConstraints(loadImageButton, 0, 4);
-      GridPane.setHalignment(loadImageButton, HPos.RIGHT);
+      GridPane.setHalignment(loadImageButton, HPos.LEFT);
+      
+      Button addFromFile = new Button("Load From File");
+      addFromFile.setPrefSize(200, 5);
+      GridPane.setConstraints(addFromFile, 0, 5);
+      GridPane.setHalignment(addFromFile, HPos.LEFT);
       
       Alert errorAlert = new Alert(AlertType.ERROR);
       errorAlert.setContentText("1. Fill out ALL Fields\n"
@@ -120,6 +125,25 @@ class AddProductScreen {
               System.out.println(shoeImage);
           }
       });
+      
+      
+      addFromFile.setOnAction(e -> {
+        Stage stage = new Stage();
+        File file = fileChooser.showOpenDialog(stage);
+        if (file != null) {
+          try {
+            addFromFile(file.getName());
+            addFromFile.setText(file.getName());
+          } catch (FileNotFoundException e1) {
+            // TODO Auto-generated catch block
+          } catch (IOException e1) {
+            // TODO Auto-generated catch block
+          } catch (ParseException e1) {
+            // TODO Auto-generated catch block
+          }
+        }
+      });
+      
       
       
       addButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -162,7 +186,7 @@ class AddProductScreen {
       
       gridPane.setAlignment(Pos.CENTER);
       gridPane.getChildren().addAll(enterProdName,enterProdNum, enterSize, quantity,
-          prodNum,prodName,size,prodQuan, addButton, loadImageButton);      
+          prodNum,prodName,size,prodQuan, addButton, loadImageButton,addFromFile);      
 
       BorderPane.setAlignment(gridPane, Pos.CENTER);
       BorderPane screen = new BorderPane();
@@ -172,8 +196,8 @@ class AddProductScreen {
       return screen;
       }
       
-
-      public void addFromFile(String jsonFilepath)
+      /////////////////////// HAVE TO FIX ////////////////////////////////
+      public static void addFromFile(String jsonFilepath)
           throws FileNotFoundException, IOException, ParseException {
         // Creates and instantiates a new JSONParser
         Object obj = new JSONParser().parse(new FileReader(jsonFilepath));
@@ -186,10 +210,10 @@ class AddProductScreen {
           // Gets the current package from json array ("packages")
           JSONObject jsonShoes = (JSONObject) shoes.get(i);
           // The current package name from the json array
-          int prodNum = (int) jsonShoes.get("productNum");
+          int prodNum = Integer.parseInt((String)jsonShoes.get("productNum"));
           String prodName = (String) jsonShoes.get("productName");
-          double size = (double) jsonShoes.get("size");
-          int quantity = (int) jsonShoes.get("quantity");
+          double size = Double.parseDouble((String)jsonShoes.get("size"));
+          int quantity = Integer.parseInt((String)jsonShoes.get("quantity"));
           // Adds shipment to the stock
           Stock.shoeTable.addShoe(prodNum, prodName, size, quantity);
         }
