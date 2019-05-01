@@ -7,6 +7,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Labeled;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
@@ -20,7 +21,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-class HelpScreen {
+public class HelpScreen {
   protected static BorderPane screen() {
     GridPane pane = new GridPane();
     pane.setHgap(10);
@@ -39,43 +40,25 @@ class HelpScreen {
     Button lookupProduct = new Button("Submit");
     lookupProduct.setPrefSize(300, 50);
     lookupProduct.setAlignment(Pos.CENTER);
-    
-    //Button shadow
-    DropShadow shadow = new DropShadow();
-    // add button
-    lookupProduct.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
-      @Override
-      public void handle(MouseEvent e) {
-        lookupProduct.setEffect(shadow);
-      }
-    });
-    // remove shadow
-    lookupProduct.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
-      @Override
-      public void handle(MouseEvent e) {
-        lookupProduct.setEffect(null);
-      }
-    });
-
-    // submit button action
-    lookupProduct.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent e) {
-        // TODO
-      }
-    });
+    final String words = "Hello! Thank you for using Sole Table! \n" + "\n"
+        + "On the home screen, you can either add a new product or look up a product already in the table. \n"
+        + "If you are unable to look up a product, it was most likely not added. If you are looking to delete a product, you must go to the product page. \n"
+        + "\n" + "If you have any questions or concerns feel free to email CS400 Group 24: \n"
+        + "Contact Info: Grace Joyce \n" + "Email: gjoyce@wisc.edu \n" + "\n" + "Feel free to send us feedback on how to improve this application. \n\nThanks again! \nCheers!\n";
+   
+    Label label = new Label(words);
+    label.setWrapText(true);
 
 
     VBox box = new VBox(50);
     box.setAlignment(Pos.CENTER);
     box.getChildren().addAll(pane, lookupProduct);
+    
 
     BorderPane borderPane = new BorderPane();
-    borderPane.setCenter(box);
+    borderPane.setCenter(label);
     borderPane.setTop(TopArea.topArea("Help"));
 
     return borderPane;
   }
-
-
 }
