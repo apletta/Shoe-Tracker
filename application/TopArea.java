@@ -39,23 +39,6 @@ class TopArea {
       }
     });
 
-    // ADD BUTTON SHADWOWS
-    DropShadow shadow = new DropShadow();
-    // add shadow
-    homeButton.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
-      @Override
-      public void handle(MouseEvent e) {
-        homeButton.setEffect(shadow);
-      }
-    });
-    // remove shadow
-    homeButton.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
-      @Override
-      public void handle(MouseEvent e) {
-        homeButton.setEffect(null);
-      }
-    });
-
     ImageView helpImg = new ImageView(new Image("questionMark.png"));
     helpImg.setFitWidth(35);
     helpImg.setFitHeight(35);
@@ -76,21 +59,6 @@ class TopArea {
       }
     });
 
-    // add shadow
-    helpButton.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
-      @Override
-      public void handle(MouseEvent e) {
-        helpButton.setEffect(shadow);
-      }
-    });
-    // remove shadow
-    helpButton.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
-      @Override
-      public void handle(MouseEvent e) {
-        helpButton.setEffect(null);
-      }
-    });
-
 
 
     ImageView exitImg = new ImageView(new Image("circleExit.png"));
@@ -106,21 +74,6 @@ class TopArea {
         // Load ProductInfoScreen
         Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
-      }
-    });
-
-    // add shadow
-    exitButton.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
-      @Override
-      public void handle(MouseEvent e) {
-        exitButton.setEffect(shadow);
-      }
-    });
-    // remove shadow
-    exitButton.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
-      @Override
-      public void handle(MouseEvent e) {
-        exitButton.setEffect(null);
       }
     });
 
