@@ -131,6 +131,7 @@ class AddProductScreen {
     });
 
 
+    //Button allowing user to strictly upload .json files
     Button addFromFile = new Button("Add From File");
     addFromFile.setPrefSize(200, 5);
     GridPane.setConstraints(addFromFile, 0, 5);
@@ -151,9 +152,12 @@ class AddProductScreen {
       }
     });
 
+    //Actions for addButton
     addButton.setOnAction(new EventHandler<ActionEvent>() {
       public void handle(ActionEvent event) {
 
+        //Checks to make sure add from file was not chosen, if so, simple add
+        //content in the file the user wishes to upload
         if(prodNum.isDisabled() && prodName.isDisabled() && size.isDisabled()
             && prodQuan.isDisabled() && loadImageButton.isDisabled()) {
             try {
@@ -263,15 +267,19 @@ class AddProductScreen {
     JSONObject parseMe = (JSONObject) obj;
     // Creates a new array from the "shoes" field of the json file
     JSONArray shoes = (JSONArray) parseMe.get("shoes");
-    // For-loop that iterates through the packages array
+    // For-loop that iterates through the shoes array
     for (int i = 0; i < shoes.size(); ++i) {
-      // Gets the current package from json array ("packages")
+      // Gets the current shoes from json array
       JSONObject jsonShoes = (JSONObject) shoes.get(i);
-      // The current package name from the json array
+      // The current shoe's product number
       int prodNum = Integer.parseInt((String)jsonShoes.get("productNum"));
+      // The current shoe's product name
       String prodName = (String) jsonShoes.get("productName");
+      // The current shoe's product size
       double size = Double.parseDouble((String)jsonShoes.get("size"));
+      // The current shoe's quantity to add
       int quantity = Integer.parseInt((String)jsonShoes.get("quantity"));
+      // The current shoe's image to add
       Image img = new Image((String) jsonShoes.get("image"));
       // Adds shipment to the stock
       Stock.shoeTable.addShoe(prodNum, prodName, size, quantity, img);
