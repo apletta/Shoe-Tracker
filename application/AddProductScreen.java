@@ -1,38 +1,33 @@
 package application;
 
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.*;
 import javafx.stage.*;
 import javafx.scene.*;
 import javafx.scene.layout.*;
-import javafx.scene.shape.*;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.image.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.text.*;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.File;
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.Optional;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.awt.Desktop;
-import java.io.File;
-import java.io.IOException;
-import java.util.Optional;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-
-import application.TopArea.*;
 
 class AddProductScreen {
 
@@ -154,6 +149,7 @@ class AddProductScreen {
 
     //Actions for addButton
     addButton.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
       public void handle(ActionEvent event) {
 
         //Checks to make sure add from file was not chosen, if so, simple add
