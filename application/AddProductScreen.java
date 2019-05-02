@@ -185,9 +185,18 @@ class AddProductScreen {
                 stage.show();
               }
             }
-            catch(FileNotFoundException e) {}
-            catch(IOException e) {}
-            catch(ParseException e) {}
+            //catch(FileNotFoundException e) {}
+            catch(IOException e) {
+              //e.printStackTrace();
+            }
+            catch(ParseException e) {
+              Alert a = new Alert(AlertType.ERROR);
+              a.setHeaderText(null);
+              a.setContentText("File could not be uploaded due to either of the following:\n\n"
+                  + "1. The file uploaded was not a .json file\n"
+                  + "2. The .json file is formatted incorrectly");
+              a.show();
+            }
         }
         
         else {
@@ -197,6 +206,7 @@ class AddProductScreen {
             double userProdSize = size.getValue(); //GRABS INPUT FROM USER
             int userQuantity = prodQuan.getValue(); //GRABS INPUT FROM USER
             Image userImage = imageArray.get(0);
+            imageArray.clear();
             // Stock.shoeTable.addShoe(userProdNum, userProdName, userProdSize, userQuantity);
             Stock.shoeTable.addShoe(userProdNum, userProdName, userProdSize, userQuantity, userImage);
 
@@ -262,8 +272,9 @@ class AddProductScreen {
       String prodName = (String) jsonShoes.get("productName");
       double size = Double.parseDouble((String)jsonShoes.get("size"));
       int quantity = Integer.parseInt((String)jsonShoes.get("quantity"));
+      Image img = new Image((String) jsonShoes.get("image"));
       // Adds shipment to the stock
-      Stock.shoeTable.addShoe(prodNum, prodName, size, quantity);
+      Stock.shoeTable.addShoe(prodNum, prodName, size, quantity, img);
     }
 
   }
