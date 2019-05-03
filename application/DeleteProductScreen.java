@@ -129,11 +129,27 @@ class DeleteProductScreen {
    
     pane.getChildren().addAll(hbox, hboxBack);
     
+    backButton.setOnAction(new EventHandler<ActionEvent>() {
+    	
+        @Override
+        public void handle(ActionEvent event) {
+        Stage stage = new Stage();
+        Scene scene = new Scene(ProductInfoScreen.screen(),Main.SCREEN_LENGTH, Main.SCREEN_WIDTH);
+        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+        stage.setTitle("Sole Table");
+        stage.setScene(scene);
+        stage.hide();
+        stage.show();
+        
+        // Closes and hides current window
+        // https://stackoverflow.com/questions/15041760/javafx-open-new-window
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+        }
+        
+    });
+    
    
-
     button.setOnAction(new EventHandler<ActionEvent>() {
-
-
 
       @Override
       public void handle(ActionEvent event) {
@@ -170,6 +186,7 @@ class DeleteProductScreen {
             scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             stage.setTitle("Sole Table");
             stage.setScene(scene);
+            stage.hide();
             stage.show();
 
             // Closes and hides current window
@@ -182,6 +199,7 @@ class DeleteProductScreen {
             scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             stage.setTitle("Sole Table");
             stage.setScene(scene);
+            stage.hide();
             stage.show();
             
             // Closes and hides current window
