@@ -8,6 +8,7 @@ public class Main extends Application {
   
   protected static final int SCREEN_LENGTH = 1200;
   protected static final int SCREEN_WIDTH = 900;
+  protected static final int SCREEN_PADDING = 10;
   
 	@Override
 	public void start(Stage primaryStage) {

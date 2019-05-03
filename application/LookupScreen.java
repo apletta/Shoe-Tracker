@@ -21,7 +21,7 @@ class LookupScreen {
 		GridPane pane = new GridPane();
 		pane.setHgap(10);
 		pane.setVgap(10);
-		pane.setPadding(new Insets(10, 10, 10, 10));
+		pane.setPadding(new Insets(Main.SCREEN_PADDING,Main.SCREEN_PADDING,Main.SCREEN_PADDING,Main.SCREEN_PADDING));
 		pane.setAlignment(Pos.CENTER);
 		Text promptUser = new Text("Enter Product Number:");
 		promptUser.setId("text");
@@ -94,6 +94,7 @@ class LookupScreen {
 		box.getChildren().addAll(pane, lookupProduct);
 
 		BorderPane borderPane = new BorderPane();
+		borderPane.setPadding(new Insets(Main.SCREEN_PADDING,Main.SCREEN_PADDING,Main.SCREEN_PADDING,Main.SCREEN_PADDING));
 		borderPane.setCenter(box);
 		borderPane.setTop(TopArea.topArea("Lookup Product"));
 

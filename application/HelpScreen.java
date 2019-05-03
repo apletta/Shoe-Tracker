@@ -16,7 +16,7 @@ public class HelpScreen {
     GridPane pane = new GridPane();
     pane.setHgap(10);
     pane.setVgap(10);
-    pane.setPadding(new Insets(10, 10, 10, 10));
+    pane.setPadding(new Insets(Main.SCREEN_PADDING,Main.SCREEN_PADDING,Main.SCREEN_PADDING,Main.SCREEN_PADDING));
     pane.setAlignment(Pos.CENTER);
     Text promptUser = new Text("Ask a Question:");
     promptUser.setId("text");
@@ -46,6 +46,7 @@ public class HelpScreen {
     
 
     BorderPane borderPane = new BorderPane();
+    borderPane.setPadding(new Insets(Main.SCREEN_PADDING,Main.SCREEN_PADDING,Main.SCREEN_PADDING,Main.SCREEN_PADDING));
     borderPane.setCenter(label);
     borderPane.setTop(TopArea.topArea("Help"));
 

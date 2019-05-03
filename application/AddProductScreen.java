@@ -41,7 +41,7 @@ class AddProductScreen {
     GridPane gridPane = new GridPane();
     gridPane.setHgap(10);
     gridPane.setVgap(10);
-    gridPane.setPadding(new Insets(10,10,10,10));
+    gridPane.setPadding(new Insets(Main.SCREEN_PADDING,Main.SCREEN_PADDING,Main.SCREEN_PADDING,Main.SCREEN_PADDING));
 
     Text enterProdNum = new Text("Enter Product Number:");
     enterProdNum.setId("text");
@@ -250,6 +250,7 @@ class AddProductScreen {
 
     BorderPane.setAlignment(gridPane, Pos.CENTER);
     BorderPane screen = new BorderPane();
+    screen.setPadding(new Insets(Main.SCREEN_PADDING,Main.SCREEN_PADDING,Main.SCREEN_PADDING,Main.SCREEN_PADDING));
     screen.setCenter(gridPane);
     screen.setTop(TopArea.topArea("Add Product"));
 
