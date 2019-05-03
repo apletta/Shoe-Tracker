@@ -73,7 +73,7 @@ class ProductInfoScreen {
       public void handle(ActionEvent event) {
         // Load ProductInfoScreen
         Stage stage = (Stage) delete.getScene().getWindow();
-        Scene scene = new Scene(DeleteProductScreen.screen(), 1600, 900);
+        Scene scene = new Scene(DeleteProductScreen.screen(), 1200, 900);
         scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
         stage.setTitle("Sole Table");
         stage.setScene(scene);
@@ -115,7 +115,7 @@ class ProductInfoScreen {
       @Override
       public void handle(ActionEvent event) {
         Stage stage = (Stage) backButton.getScene().getWindow();
-        Scene scene = new Scene(ProductInfoScreen.screen(), 1600, 900);
+        Scene scene = new Scene(ProductInfoScreen.screen(), Main.SCREEN_LENGTH, Main.SCREEN_WIDTH);
         scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
         stage.setTitle("Sole Table");
         stage.setScene(scene);

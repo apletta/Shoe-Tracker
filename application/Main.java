@@ -20,10 +20,13 @@ import shoetable.ShoeInfo;
 
 public class Main extends Application {
   
+  protected static final int SCREEN_LENGTH = 1200;
+  protected static final int SCREEN_WIDTH = 900;
+  
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-	        Scene scene = new Scene(HomeScreen.screen(),1600,900);
+	        Scene scene = new Scene(HomeScreen.screen(),SCREEN_LENGTH,SCREEN_WIDTH);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setTitle("Sole Table");
 			primaryStage.setScene(scene);

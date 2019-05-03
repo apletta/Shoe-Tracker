@@ -85,7 +85,7 @@ class TopArea {
   }
 
   protected static HBox topArea(String portion) {
-    Label topLabel = new Label("Story Inventory | " + portion);
+    Label topLabel = new Label("Store Inventory | " + portion);
 
     Region rg1 = new Region();
     HBox.setHgrow(rg1, Priority.ALWAYS);

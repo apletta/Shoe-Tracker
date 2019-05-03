@@ -25,7 +25,7 @@ class HomeScreen {
 
         // Load lookupProduct window
         Stage stage = (Stage) lookupProduct.getScene().getWindow();
-        Scene scene = new Scene(LookupScreen.screen(), 1600, 900);
+        Scene scene = new Scene(LookupScreen.screen(), Main.SCREEN_LENGTH, Main.SCREEN_WIDTH);
         scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
         stage.setTitle("Sole Table");
         stage.setScene(scene);
@@ -40,7 +40,7 @@ class HomeScreen {
       public void handle(ActionEvent event) {
         // Load ProductInfoScreen
         Stage stage = (Stage) addProduct.getScene().getWindow();
-        Scene scene = new Scene(AddProductScreen.screen(), 1600, 900);
+        Scene scene = new Scene(AddProductScreen.screen(), Main.SCREEN_LENGTH, Main.SCREEN_WIDTH);
         scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
         stage.setTitle("Sole Table");
         stage.setScene(scene);

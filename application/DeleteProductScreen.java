@@ -161,7 +161,7 @@ class DeleteProductScreen {
           if (newResult.get() == goHome) {
             // System.out.println("Button Clicked");
             Stage stage = new Stage();
-            Scene scene = new Scene(HomeScreen.screen(), 1600, 900);
+            Scene scene = new Scene(HomeScreen.screen(),Main.SCREEN_LENGTH, Main.SCREEN_WIDTH);
             scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             stage.setTitle("Sole Table");
             stage.setScene(scene);
@@ -174,7 +174,7 @@ class DeleteProductScreen {
           }
           else if(newResult.get() == deleteMore) {
             Stage stage = new Stage();
-            Scene scene = new Scene(DeleteProductScreen.screen(), 1600, 900);
+            Scene scene = new Scene(DeleteProductScreen.screen(), Main.SCREEN_LENGTH, Main.SCREEN_WIDTH);
             scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             stage.setTitle("Sole Table");
             stage.setScene(scene);

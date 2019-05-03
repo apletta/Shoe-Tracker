@@ -167,7 +167,7 @@ class AddProductScreen {
               if(result.get() == goHome) {
                 //System.out.println("Button Clicked");
                 Stage stage = new Stage();
-                Scene scene = new Scene(HomeScreen.screen(), 1600, 900);
+                Scene scene = new Scene(HomeScreen.screen(), Main.SCREEN_LENGTH, Main.SCREEN_WIDTH);
                 scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
                 stage.setTitle("Sole Table");
                 stage.setScene(scene);
@@ -179,7 +179,7 @@ class AddProductScreen {
               }
               else if(result.get() == addMore) {
                 Stage stage = (Stage) addButton.getScene().getWindow();
-                Scene scene = new Scene(AddProductScreen.screen(), 1600, 900);
+                Scene scene = new Scene(AddProductScreen.screen(), Main.SCREEN_LENGTH, Main.SCREEN_WIDTH);
                 scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
                 stage.setTitle("Sole Table");
                 stage.setScene(scene);
@@ -218,7 +218,7 @@ class AddProductScreen {
             if(result.get() == goHome) {
               //System.out.println("Button Clicked");
               Stage stage = new Stage();
-              Scene scene = new Scene(HomeScreen.screen(), 1600, 900);
+              Scene scene = new Scene(HomeScreen.screen(), Main.SCREEN_LENGTH, Main.SCREEN_WIDTH);
               scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
               stage.setTitle("Sole Table");
               stage.setScene(scene);

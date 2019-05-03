@@ -72,7 +72,7 @@ class LookupScreen {
 					
 					// Load ProductInfoScreen
 					Stage stage = (Stage) lookupProduct.getScene().getWindow();
-					Scene scene = new Scene(ProductInfoScreen.screen(), 1600, 900);
+					Scene scene = new Scene(ProductInfoScreen.screen(), Main.SCREEN_LENGTH, Main.SCREEN_WIDTH);
 					scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 					stage.setTitle("Sole Table");
 					stage.setScene(scene);
