@@ -183,7 +183,7 @@ class AddProductScreen {
                 scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
                 stage.setTitle("Sole Table");
                 stage.setScene(scene);
-                stage.hide();
+                //stage.hide();
                 stage.show();
               }
             }
