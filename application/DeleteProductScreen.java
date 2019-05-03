@@ -114,8 +114,20 @@ class DeleteProductScreen {
 
     Button button = new Button("DELETE");
     button.setAlignment(Pos.CENTER);
+    
+    Button backButton = new Button("Back");
+    backButton.setAlignment(Pos.CENTER);
+    
+    HBox hboxBack = new HBox(1);
+    hboxBack.setAlignment(Pos.CENTER);
+    hboxBack.getChildren().addAll(backButton);
+    
     hbox.setAlignment(Pos.CENTER);
     hbox.getChildren().addAll(combo, button);
+    
+    
+    
+
     
 
     button.setOnAction(new EventHandler<ActionEvent>() {
@@ -137,6 +149,8 @@ class DeleteProductScreen {
         Optional<ButtonType> result = checkDelete.showAndWait();
         if (result.get() == yesButton) {
           Stock.shoeTable.deleteShoe(sizeLs.get(0), combo.getValue());
+          
+          
 
           ButtonType goHome = new ButtonType("Return Home", ButtonBar.ButtonData.FINISH);
           ButtonType deleteMore = new ButtonType("Delete Another ", ButtonBar.ButtonData.OTHER);
@@ -182,7 +196,12 @@ class DeleteProductScreen {
 
     VBox vbox = new VBox(15);
     vbox.setAlignment(Pos.CENTER);
-    vbox.getChildren().addAll(pane, hbox);
+    HBox hboxBlank = new HBox(1);
+    hboxBlank.setAlignment(Pos.CENTER);
+
+    vbox.getChildren().addAll(pane, hbox, hboxBlank, hboxBack);
+    
+
 
 
     BorderPane borderPane = new BorderPane();
