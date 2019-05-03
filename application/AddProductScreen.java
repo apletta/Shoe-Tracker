@@ -166,16 +166,13 @@ class AddProductScreen {
               Optional<ButtonType> result = addedFileAlert.showAndWait();
               if(result.get() == goHome) {
                 //System.out.println("Button Clicked");
-                Stage stage = new Stage();
+                Stage stage = (Stage)(((Node)(event.getSource())).getScene().getWindow());
                 Scene scene = new Scene(HomeScreen.screen(), Main.SCREEN_LENGTH, Main.SCREEN_WIDTH);
                 scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
                 stage.setTitle("Sole Table");
                 stage.setScene(scene);
                 stage.show();
-
-                //Closes and hides current window
-                //https://stackoverflow.com/questions/15041760/javafx-open-new-window
-                ((Node)(event.getSource())).getScene().getWindow().hide();
+                
               }
               else if(result.get() == addMore) {
                 Stage stage = (Stage) addButton.getScene().getWindow();
