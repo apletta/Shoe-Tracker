@@ -27,7 +27,7 @@ class DeleteProductScreen {
     GridPane pane = new GridPane();
     pane.setHgap(5);
     pane.setVgap(5);
-    pane.setPadding(new Insets(10, 10, 10, 10));
+    pane.setPadding(new Insets(Main.SCREEN_PADDING,Main.SCREEN_PADDING,Main.SCREEN_PADDING,Main.SCREEN_PADDING));
 
     Text txt = new Text("Available Sizes");
     txt.setStyle("-fx-font-weight: bold");
@@ -186,6 +186,7 @@ class DeleteProductScreen {
 
 
     BorderPane borderPane = new BorderPane();
+    borderPane.setPadding(new Insets(Main.SCREEN_PADDING,Main.SCREEN_PADDING,Main.SCREEN_PADDING,Main.SCREEN_PADDING));
     borderPane.setCenter(vbox);
     borderPane.setTop(TopArea.topArea("Delete Product"));
     return borderPane;

@@ -56,7 +56,7 @@ class HomeScreen {
 
     BorderPane root = new BorderPane();
     root.setCenter(box);
-    root.setPadding(new Insets(10,10,10,10));
+    root.setPadding(new Insets(Main.SCREEN_PADDING,Main.SCREEN_PADDING,Main.SCREEN_PADDING,Main.SCREEN_PADDING));
     root.setTop(TopArea.topArea("Home"));
     return root;
   }

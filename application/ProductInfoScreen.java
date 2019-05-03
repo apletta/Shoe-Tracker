@@ -19,7 +19,7 @@ class ProductInfoScreen {
     GridPane pane = new GridPane();
     pane.setHgap(10);
     pane.setVgap(10);
-    pane.setPadding(new Insets(10, 10, 10, 10));
+    pane.setPadding(new Insets(Main.SCREEN_PADDING,Main.SCREEN_PADDING,Main.SCREEN_PADDING,Main.SCREEN_PADDING));
 
     // Need to add lookup functions to find actual object info
     //ImageView image = new ImageView(new Image("aj1.png"));
@@ -131,6 +131,7 @@ class ProductInfoScreen {
 
 
     BorderPane root = new BorderPane();
+    root.setPadding(new Insets(Main.SCREEN_PADDING,Main.SCREEN_PADDING,Main.SCREEN_PADDING,Main.SCREEN_PADDING));
     root.setCenter(box);
     root.setTop(TopArea.topArea("Product Info"));
 
