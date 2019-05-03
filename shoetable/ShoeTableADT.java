@@ -83,5 +83,4 @@ public interface ShoeTableADT {
 	 */
 	public int getQuantity(double shoeSize);
 	
-	
 }

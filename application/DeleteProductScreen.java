@@ -140,7 +140,6 @@ class DeleteProductScreen {
 				stage.setTitle("Sole Table");
 				stage.setScene(scene);
 				stage.show();
-
 			}
 
 		});
@@ -198,9 +197,9 @@ class DeleteProductScreen {
 						stage.hide();
 						stage.show();
 
-						// Closes and hides current window
-						// https://stackoverflow.com/questions/15041760/javafx-open-new-window
-						((Node) (event.getSource())).getScene().getWindow().hide();
+//						// Closes and hides current window
+//						// https://stackoverflow.com/questions/15041760/javafx-open-new-window
+//						((Node) (event.getSource())).getScene().getWindow().hide();
 					}
 				}
 			}

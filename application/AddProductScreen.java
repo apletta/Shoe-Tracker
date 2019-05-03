@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.*;
 import javafx.stage.*;
+import shoetable.KeyNotFoundException;
 import javafx.scene.*;
 import javafx.scene.layout.*;
 import javafx.scene.control.*;
@@ -203,78 +204,77 @@ class AddProductScreen {
 						String userProdName = prodName.getText().trim(); // GRABS INPUT FROM USER
 						double userProdSize = size.getValue(); // GRABS INPUT FROM USER
 						int userQuantity = prodQuan.getValue(); // GRABS INPUT FROM USER
-						
-						if(userProdName.length()==0) {
+						Image userImage = new Image("no-pic.png"); // default pic is that image not available
+
+						if (userProdName.length() == 0) {
 							throw new Exception();
 						}
+
+						try {
+							// if existing name doesn't match user name with same product number, say it's a
+							// problem
+							String existingName = Stock.shoeTable.lookupShoe(userProdNum).name;
+							if (!existingName.equals(userProdName)) {
+								Alert existingNameAlert = new Alert(AlertType.ERROR);
+								existingNameAlert.setContentText(
+										"Product exists with same product number and different name. Please adjust name to add to product."
+												+ "\n\nExisting number: " + userProdNum 
+												+ "\nExisting name: " + existingName);
+								existingNameAlert.setHeaderText(null);
+
+								Optional<ButtonType> result = existingNameAlert.showAndWait();
+
+								throw new ExistingNameException(); // throw exception to break setOnAction block
+							}
+
+						} catch (KeyNotFoundException e) {
+
+						}
+
 						
-						if (imageArray.size() == 0) {
+						if (imageArray.size() == 0) { // enter if user has not selected an image
 
 							Optional<ButtonType> addImage = noImageAlert.showAndWait();
 
-							if (addImage.get() == noImage) {
-								// User does not want to add image to make a Shoe without image field
-								
-								Image noPic = new Image("no-pic.png");
-
-								Stock.shoeTable.addShoe(userProdNum, userProdName, userProdSize, userQuantity, noPic);
-
-								// Code Reference:
-								// https://www.programcreek.com/java-api-examples/?api=javafx.scene.control.ButtonType
-								Optional<ButtonType> result = addedAlert.showAndWait();
-								if (result.get() == goHome) {
-									// System.out.println("Button Clicked");
-									Stage stage = new Stage();
-									Scene scene = new Scene(HomeScreen.screen(), Main.SCREEN_LENGTH, Main.SCREEN_WIDTH);
-									scene.getStylesheets()
-											.add(getClass().getResource("application.css").toExternalForm());
-									stage.setTitle("Sole Table");
-									stage.setScene(scene);
-									stage.show();
-
-									// Closes and hides current window
-									// https://stackoverflow.com/questions/15041760/javafx-open-new-window
-									((Node) (event.getSource())).getScene().getWindow().hide();
-								} else if (result.get() == addMore) {
-									prodNum.clear();
-									prodName.clear();
-									size.getSelectionModel().clearSelection();
-									prodQuan.getSelectionModel().clearSelection();
-								}
-
-							} 
-
-						} else { // else imageArray has an image in it, so load a Shoe with that image
-							Image userImage = imageArray.get(0);
-							imageArray.clear();
-							Stock.shoeTable.addShoe(userProdNum, userProdName, userProdSize, userQuantity, userImage);
-
-							// Code Reference:
-							// https://www.programcreek.com/java-api-examples/?api=javafx.scene.control.ButtonType
-							Optional<ButtonType> result = addedAlert.showAndWait();
-							if (result.get() == goHome) {
-								// System.out.println("Button Clicked");
-								Stage stage = new Stage();
-								Scene scene = new Scene(HomeScreen.screen(), Main.SCREEN_LENGTH, Main.SCREEN_WIDTH);
-								scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-								stage.setTitle("Sole Table");
-								stage.setScene(scene);
-								stage.show();
-
-								// Closes and hides current window
-								// https://stackoverflow.com/questions/15041760/javafx-open-new-window
-								((Node) (event.getSource())).getScene().getWindow().hide();
-							} else if (result.get() == addMore) {
-								prodNum.clear();
-								prodName.clear();
-								size.getSelectionModel().clearSelection();
-								prodQuan.getSelectionModel().clearSelection();
+							if (addImage.get() == loadImage) {
+								// User wants to add image so help them go back
+								throw new ExistingNameException();
 							}
 
+						} else { // else imageArray has an image in it, so load a Shoe with that image
+							userImage = imageArray.get(0);
+							imageArray.clear();
+						}
+						
+						Stock.shoeTable.addShoe(userProdNum, userProdName, userProdSize, userQuantity, userImage);
+
+						// Code Reference:
+						// https://www.programcreek.com/java-api-examples/?api=javafx.scene.control.ButtonType
+						Optional<ButtonType> result = addedAlert.showAndWait();
+						if (result.get() == goHome) {
+							// System.out.println("Button Clicked");
+							Stage stage = new Stage();
+							Scene scene = new Scene(HomeScreen.screen(), Main.SCREEN_LENGTH, Main.SCREEN_WIDTH);
+							scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+							stage.setTitle("Sole Table");
+							stage.setScene(scene);
+							stage.show();
+
+							// Closes and hides current window
+							// https://stackoverflow.com/questions/15041760/javafx-open-new-window
+							((Node) (event.getSource())).getScene().getWindow().hide();
+						} else if (result.get() == addMore) {
+							prodNum.clear();
+							prodName.clear();
+							size.getSelectionModel().clearSelection();
+							prodQuan.getSelectionModel().clearSelection();
 						}
 
+					} catch (ExistingNameException e) {
+
 					} catch (Exception e) {
-						e.printStackTrace(); 
+
+						e.printStackTrace();
 						errorAlert.show();
 					}
 				}
