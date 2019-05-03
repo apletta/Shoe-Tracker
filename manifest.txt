@@ -1,4 +1,5 @@
 Manifest-Version: 1.0
-Created-By: ateam-23
+Created-By: ateam 23
+Class-Path: json-simple-1.1.1.jar
 Main-Class: application.Main
 
