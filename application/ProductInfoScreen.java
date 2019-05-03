@@ -60,6 +60,8 @@ class ProductInfoScreen {
     checkSize.setAlignment(Pos.CENTER);
     Button delete = new Button("Delete Product(s)");
     delete.setAlignment(Pos.CENTER);
+    Button backButton = new Button("Back");
+    backButton.setAlignment(Pos.CENTER);
 
 
     // delete actions
@@ -100,8 +102,22 @@ class ProductInfoScreen {
         // Just shown
         vbox.getChildren().clear();
         // Adds the label and displaySizes to scene
-        vbox.getChildren().addAll(sizeLabel, displaySizes);
+        vbox.getChildren().addAll(sizeLabel, displaySizes,backButton);
         
+      }
+    });
+    
+    backButton.setOnAction(new EventHandler<ActionEvent>() {
+      
+      @Override
+      public void handle(ActionEvent event) {
+        Stage stage = (Stage) backButton.getScene().getWindow();
+        Scene scene = new Scene(ProductInfoScreen.screen(), 1600, 900);
+        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+        stage.setTitle("Sole Table");
+        stage.setScene(scene);
+        //stage.hide();
+        stage.show();
       }
     });
 

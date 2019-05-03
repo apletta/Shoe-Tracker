@@ -11,7 +11,6 @@ import javafx.scene.*;
 import javafx.scene.layout.*;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.*;
 
@@ -43,23 +42,6 @@ class DeleteProductScreen {
     box.setAlignment(Pos.CENTER);
     GridPane.setConstraints(box, 0, 1);
     pane.getChildren().addAll(txt, box);
-
-    // BUTTON SHADOW
-    DropShadow shadow = new DropShadow();
-    // add shadow
-    box.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
-      @Override
-      public void handle(MouseEvent e) {
-        box.setEffect(shadow);
-      }
-    });
-    // remove shadow
-    box.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
-      @Override
-      public void handle(MouseEvent e) {
-        box.setEffect(null);
-      }
-    });
 
     HBox hbox = new HBox(1);
     ComboBox<Integer> combo = new ComboBox<>();
@@ -136,21 +118,7 @@ class DeleteProductScreen {
     button.setAlignment(Pos.CENTER);
     hbox.setAlignment(Pos.CENTER);
     hbox.getChildren().addAll(combo, button);
-
-    // add shadow
-    button.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
-      @Override
-      public void handle(MouseEvent e) {
-        button.setEffect(shadow);
-      }
-    });
-    // remove shadow
-    button.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
-      @Override
-      public void handle(MouseEvent e) {
-        button.setEffect(null);
-      }
-    });
+    
 
     button.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -173,12 +141,13 @@ class DeleteProductScreen {
           Stock.shoeTable.deleteShoe(sizeLs.get(0), combo.getValue());
 
           ButtonType goHome = new ButtonType("Return Home", ButtonBar.ButtonData.FINISH);
+          ButtonType deleteMore = new ButtonType("Delete Another ", ButtonBar.ButtonData.OTHER);
           Alert addedAlert = new Alert(AlertType.CONFIRMATION);
           addedAlert.setContentText("Product Sucessfully Deleted!");
           addedAlert.setHeaderText(null);
           addedAlert.setTitle(null);
           addedAlert.getButtonTypes().clear();
-          addedAlert.getButtonTypes().addAll(goHome);
+          addedAlert.getButtonTypes().addAll(goHome,deleteMore);
 
           Optional<ButtonType> newResult = addedAlert.showAndWait();
           if (newResult.get() == goHome) {
@@ -191,6 +160,19 @@ class DeleteProductScreen {
             stage.hide();
             stage.show();
 
+            // Closes and hides current window
+            // https://stackoverflow.com/questions/15041760/javafx-open-new-window
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+          }
+          else if(newResult.get() == deleteMore) {
+            Stage stage = new Stage();
+            Scene scene = new Scene(DeleteProductScreen.screen(), 1600, 900);
+            scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+            stage.setTitle("Sole Table");
+            stage.setScene(scene);
+            //stage.hide();
+            stage.show();
+            
             // Closes and hides current window
             // https://stackoverflow.com/questions/15041760/javafx-open-new-window
             ((Node) (event.getSource())).getScene().getWindow().hide();
