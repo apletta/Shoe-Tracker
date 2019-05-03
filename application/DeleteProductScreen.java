@@ -170,7 +170,6 @@ class DeleteProductScreen {
             scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             stage.setTitle("Sole Table");
             stage.setScene(scene);
-            //stage.hide();
             stage.show();
 
             // Closes and hides current window
@@ -183,7 +182,6 @@ class DeleteProductScreen {
             scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             stage.setTitle("Sole Table");
             stage.setScene(scene);
-            //stage.hide();
             stage.show();
             
             // Closes and hides current window
