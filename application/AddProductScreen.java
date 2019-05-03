@@ -213,9 +213,11 @@ class AddProductScreen {
 							Optional<ButtonType> addImage = noImageAlert.showAndWait();
 
 							if (addImage.get() == noImage) {
-								
 								// User does not want to add image to make a Shoe without image field
-								Stock.shoeTable.addShoe(userProdNum, userProdName, userProdSize, userQuantity);
+								
+								Image noPic = new Image("no-pic.png");
+
+								Stock.shoeTable.addShoe(userProdNum, userProdName, userProdSize, userQuantity, noPic);
 
 								// Code Reference:
 								// https://www.programcreek.com/java-api-examples/?api=javafx.scene.control.ButtonType
@@ -240,9 +242,7 @@ class AddProductScreen {
 									prodQuan.getSelectionModel().clearSelection();
 								}
 
-							} else {
-
-							}
+							} 
 
 						} else { // else imageArray has an image in it, so load a Shoe with that image
 							Image userImage = imageArray.get(0);
@@ -274,7 +274,7 @@ class AddProductScreen {
 						}
 
 					} catch (Exception e) {
-						e.printStackTrace();
+						e.printStackTrace(); 
 						errorAlert.show();
 					}
 				}

@@ -16,6 +16,7 @@ import javafx.scene.text.*;
 class ProductInfoScreen {
 
   protected static BorderPane screen() {
+	  
     GridPane pane = new GridPane();
     pane.setHgap(10);
     pane.setVgap(10);
