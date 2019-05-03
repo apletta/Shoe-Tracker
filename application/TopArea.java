@@ -46,7 +46,7 @@ class TopArea {
 
       public void handle(ActionEvent event) {
         Stage stage = (Stage) helpButton.getScene().getWindow();
-        Scene scene = new Scene(HelpScreen.screen(), 1600, 900);
+        Scene scene = new Scene(HelpScreen.screen(), Main.SCREEN_LENGTH, Main.SCREEN_WIDTH);
         scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
         stage.setTitle("Sole Table");
         stage.setScene(scene);
