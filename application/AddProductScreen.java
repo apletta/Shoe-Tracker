@@ -57,7 +57,7 @@ class AddProductScreen {
     GridPane.setConstraints(prodName, 1, 1);
 
 
-
+    final double defaultSize = 8.5;
     Text enterSize = new Text("Enter Size:");
     enterSize.setId("text");
     GridPane.setConstraints(enterSize, 0, 2);
@@ -65,10 +65,11 @@ class AddProductScreen {
     for(double i = 5; i < 13; i = i+0.5) {
       size.getItems().add(i);
     }
+    size.setValue(defaultSize);
     GridPane.setConstraints(size, 1, 2);
 
 
-
+    final int defaultQuan = 1;
     Text quantity = new Text("Quantity:");
     quantity.setId("text");
     GridPane.setConstraints(quantity, 0, 3);
@@ -76,6 +77,7 @@ class AddProductScreen {
     for(int i = 1; i < 11; i++) {
       prodQuan.getItems().add(i);
     }
+    prodQuan.setValue(defaultQuan);
     GridPane.setConstraints(prodQuan, 1, 3);
 
 

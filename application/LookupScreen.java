@@ -2,15 +2,25 @@ package application;
 import shoetable.ShoeInfo;
 import shoetable.KeyNotFoundException;
 
+import javafx.application.Application;
 import javafx.geometry.*;
 import javafx.stage.*;
 import javafx.scene.*;
 import javafx.scene.layout.*;
+import javafx.scene.shape.*;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.image.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.*;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.event.ActionEvent;
+
+import java.io.IOException;
+
+import application.TopArea.*;
 
 class LookupScreen {
 

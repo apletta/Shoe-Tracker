@@ -1,8 +1,22 @@
 package application;
 	
 import javafx.application.Application;
+import javafx.geometry.*;
 import javafx.stage.*;
 import javafx.scene.*;
+import javafx.scene.layout.*;
+import javafx.scene.shape.*;
+import javafx.scene.control.*;
+import javafx.scene.image.*;
+import javafx.scene.text.*;
+
+import application.HomeScreen.*;
+import application.LookupScreen.*;
+import application.ProductInfoScreen.*;
+import application.AddProductScreen.*;
+
+import application.Stock;
+import shoetable.ShoeInfo;
 
 public class Main extends Application {
   
