@@ -121,14 +121,15 @@ class DeleteProductScreen {
     HBox hboxBack = new HBox(1);
     hboxBack.setAlignment(Pos.CENTER);
     hboxBack.getChildren().addAll(backButton);
+    GridPane.setConstraints(hboxBack, 0, 28);
     
     hbox.setAlignment(Pos.CENTER);
     hbox.getChildren().addAll(combo, button);
+    GridPane.setConstraints(hbox, 0, 6);
+   
+    pane.getChildren().addAll(hbox, hboxBack);
     
-    
-    
-
-    
+   
 
     button.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -196,12 +197,9 @@ class DeleteProductScreen {
 
     VBox vbox = new VBox(15);
     vbox.setAlignment(Pos.CENTER);
-    HBox hboxBlank = new HBox(1);
-    hboxBlank.setAlignment(Pos.CENTER);
 
-    vbox.getChildren().addAll(pane, hbox, hboxBlank, hboxBack);
+    vbox.getChildren().addAll(pane);
     
-
 
 
     BorderPane borderPane = new BorderPane();
