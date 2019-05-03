@@ -1,30 +1,20 @@
 package application;
 
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+
 import javafx.geometry.*;
+
 import javafx.stage.*;
 import javafx.scene.*;
 import javafx.scene.layout.*;
-import javafx.scene.shape.*;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-
-import javafx.scene.control.ButtonBar.ButtonData;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.image.*;
-
-import javafx.scene.control.ButtonBar.ButtonData;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.image.*;
-
-import javafx.scene.input.MouseEvent;
 import javafx.scene.text.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import application.TopArea.*;
 
 
 class DeleteProductScreen {
