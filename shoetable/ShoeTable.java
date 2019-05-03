@@ -59,15 +59,56 @@ public class ShoeTable implements ShoeTableADT {
 	 */
 	public void addShoe(int productNumber, String name, double shoeSize, int quantity, Image image) {
 		try {
+
 			Shoe current = shoeTable.get(productNumber);
-			if (current == null) {
+			System.out.println("current: " + current);
+
+			if (current == null) { // make new shoe if it's new or has a non-default image
 				current = new Shoe(name, image);
 				shoeTable.insert(productNumber, current);
+			} else { // if an existing shoe may want to apply new image
+				Image currImage = current.image; // current image
+				boolean sameImage = true;
+
+				try {
+					// check for non-stock image
+					for (int i = 0; i < currImage.getWidth(); i++) {
+						for (int j = 0; j < currImage.getHeight(); j++) {
+							// check if images are the same or not
+							if (currImage.getPixelReader().getArgb(i, j) != image.getPixelReader().getArgb(i, j)) {
+								sameImage = false;
+							}
+						}
+					}
+
+				} catch (IndexOutOfBoundsException e) { // error will be thrown for any two images of different dimensions
+					// check for stock image, don't let it go back to no pic
+					try {
+					Image stockImage = new Image("no-pic.png"); // default pic is that image not available
+					for (int i = 0; i < stockImage.getWidth(); i++) {
+						for (int j = 0; j < stockImage.getHeight(); j++) {
+							// check if images are the same or not
+							if (stockImage.getPixelReader().getArgb(i, j) == image.getPixelReader().getArgb(i, j)) {
+								sameImage = true; // same image as stock, don't let it go back
+							} else {
+								sameImage = false; // treat as different images
+							}
+						}
+					}
+					} catch (IndexOutOfBoundsException e2) {
+						sameImage = false;
+					}
+				}
+
+				if (!sameImage) {
+					current.image = image; // if not the same, update image
+				}
 			}
+
 			current.shoeSizeList.add(shoeSize, quantity);
 			current.totalQuantity += quantity;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 		}
 	}
 
@@ -107,8 +148,8 @@ public class ShoeTable implements ShoeTableADT {
 	}
 
 	/**
-	 * decrease quantity from given shoe size if product does not exit, throw
-	 * KeyNotFoundException if shoe size does not exit, throw
+	 * decrease quantity from given shoe size if product does not exist, throw
+	 * KeyNotFoundException if shoe size does not exist, throw
 	 * ShoeSizeNotFoundException if quantity to be deleted is larger than current,
 	 * throw QuantityTooLargeException
 	 * 

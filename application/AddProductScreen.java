@@ -205,6 +205,7 @@ class AddProductScreen {
 						double userProdSize = size.getValue(); // GRABS INPUT FROM USER
 						int userQuantity = prodQuan.getValue(); // GRABS INPUT FROM USER
 						Image userImage = new Image("no-pic.png"); // default pic is that image not available
+				
 
 						if (userProdName.length() == 0) {
 							throw new Exception();
@@ -245,6 +246,8 @@ class AddProductScreen {
 							userImage = imageArray.get(0);
 							imageArray.clear();
 						}
+						
+						System.out.println("userImage: "+userImage);
 						
 						Stock.shoeTable.addShoe(userProdNum, userProdName, userProdSize, userQuantity, userImage);
 
