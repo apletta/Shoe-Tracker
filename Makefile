@@ -8,7 +8,7 @@ make:
 
 jar: 
 	javac -cp $(CLASSPATH) -d . application/*.java
-	jar cvmf manifest.txt executable.jar .
+	jar cvmf manifest.txt executable.jar . 
 
 runjar:
 	java -jar executable.jar

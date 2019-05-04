@@ -16,7 +16,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.*;
 import javafx.stage.*;
-import shoetable.KeyNotFoundException;
+import application.KeyNotFoundException;
 import javafx.scene.*;
 import javafx.scene.layout.*;
 import javafx.scene.control.*;

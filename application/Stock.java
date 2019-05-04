@@ -11,8 +11,8 @@
 
 package application;
 
-import shoetable.ShoeTableADT;
-import shoetable.ShoeTable;
+import application.ShoeTableADT;
+import application.ShoeTable;
 
 /**
  * Creates a shoe table as a instance of ShoeTableADT

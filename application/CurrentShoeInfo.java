@@ -11,7 +11,7 @@
 
 package application;
 
-import shoetable.ShoeInfo;
+import application.ShoeInfo;
 
 /**
  * Declares current shoe information.

@@ -1,0 +1,17 @@
+Start Screen: 
+Home Screen
+
+Problem description:
+If user add a product with a product picture, when user tries to save shoe data to local .json file, the exported .json file could be not added back due to the picture cannot be handled correctly. 
+
+Replay steps:
+1. User opens the application
+2. User clicks "Add Product"
+3. User enters product number, name, size and quantity, then click "Load Image..." to attach a product image
+4. User returns to home screen, click "Save shoes"
+5. User clicks "Add Product" again
+6. User clicks "Add from file"
+7. The application will read product number, name, size and quantity, and without previously saved image, but replaced with "Image not available"
+
+Possible solution:
+We need to save the path when user adds image, and write image to the path when user saves shoe data. 

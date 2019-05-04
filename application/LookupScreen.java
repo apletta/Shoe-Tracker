@@ -11,8 +11,8 @@
 
 package application;
 
-import shoetable.ShoeInfo;
-import shoetable.KeyNotFoundException;
+import application.ShoeInfo;
+import application.KeyNotFoundException;
 import javafx.geometry.*;
 import javafx.stage.*;
 import javafx.scene.*;
