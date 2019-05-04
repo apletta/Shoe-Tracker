@@ -8,8 +8,13 @@
  */
 package shoetable;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import javafx.scene.image.Image;
 
@@ -110,6 +115,32 @@ public class ShoeTable implements ShoeTableADT {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+//	public void writeToJSON() {
+//        JSONObject shoeDetails = new JSONObject();
+//        shoeDetails.put("firstName", "Lokesh");
+//        shoeDetails.put("lastName", "Gupta");
+//        shoeDetails.put("website", "howtodoinjava.com");
+//         
+//        JSONObject shoeObject = new JSONObject();
+//        shoeObject.put("employee", shoeDetails);
+//        
+//        //Add shoes to list
+//        JSONArray shoeList = new JSONArray();
+//        shoeList.add(shoeObject);
+//
+//        
+//        //Write JSON file
+//        try (FileWriter file = new FileWriter("shoesTest.json")) {
+// 
+//            file.write(shoeList.toJSONString());
+//            file.flush();
+// 
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+        
 	}
 
 	/**
