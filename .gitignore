@@ -2,9 +2,8 @@
 
 # Compiled class file
 *.class
-*.classpath
-*.project
-*.fxbuild
+#*.classpath
+#*.fxbuild
 
 # Log file
 *.log
