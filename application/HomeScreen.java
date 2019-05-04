@@ -11,13 +11,17 @@
 
 package application;
 
+import java.util.Optional;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.*;
 import javafx.stage.*;
+import shoetable.ShoeInfo;
 import javafx.scene.*;
 import javafx.scene.layout.*;
 import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
 
 /**
  * Sets up the primary home screen for the Shoe-Tracker application.
@@ -37,6 +41,11 @@ class HomeScreen {
     // creates LookupProduct button and sets to preferred size
     Button lookupProduct = new Button("Lookup Product");
     lookupProduct.setPrefSize(300, 100);
+    
+    
+    Button saveShoes = new Button("Save shoes"); // new button to lookup the product
+    saveShoes.setPrefSize(200, 40);
+    
 
     /**
      * LookupProduct button action.
@@ -76,14 +85,47 @@ class HomeScreen {
         stage.show();
       }
     });
+    
+    /**
+     * saveShoes button action.
+     */
+    saveShoes.setOnAction(new EventHandler<ActionEvent>() {
+      /**
+       * When button clicked, navigates to the add product screen.
+       */
+      public void handle(ActionEvent event) {
+    	  int numShoes = Stock.shoeTable.size();
+    	  
+    	  if(numShoes > 0) {
+    		  
+    		  
+    	  } else {
+    		    // alert if there are no shoes to load
+    		    Alert errorAlert = new Alert(AlertType.ERROR);
+    		    errorAlert.setContentText("No shoes to save. Please add shoes!");
+    		    errorAlert.setHeaderText(null);
+    		    
+    	        Optional<ButtonType> result = errorAlert.showAndWait(); // waits for response
+    	  }
+    	  
+    	  Stock.shoeTable.writeToJSON();
+ 
+      }
+    });
+    
     // configures display layout
     HBox box = new HBox();
     box.getChildren().addAll(lookupProduct, addProduct);
     box.setSpacing(200);
     box.setAlignment(Pos.CENTER);
+    
+    VBox vbox = new VBox();
+    vbox.getChildren().addAll(box, saveShoes);
+    vbox.setSpacing(200);
+    vbox.setAlignment(Pos.CENTER);
 
     BorderPane root = new BorderPane();
-    root.setCenter(box); // sets Hbox to the center of the field
+    root.setCenter(vbox); // sets Hbox to the center of the field
     // pads outside of window
     root.setPadding(new Insets(Main.SCREEN_PADDING, Main.SCREEN_PADDING, Main.SCREEN_PADDING,
         Main.SCREEN_PADDING));

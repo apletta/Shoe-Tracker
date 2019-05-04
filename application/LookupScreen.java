@@ -59,12 +59,14 @@ class LookupScreen {
 
     Button lookupProduct = new Button("Lookup Product"); // new button to lookup the product
     lookupProduct.setPrefSize(300, 50);
-    lookupProduct.setAlignment(Pos.CENTER);
+    lookupProduct.setAlignment(Pos.CENTER);  
 
     /**
      * LookupProduct button actions.
      */
     lookupProduct.setOnAction(new EventHandler<ActionEvent>() {
+    	
+    	
       /**
        * Handles event when button clicked.
        */

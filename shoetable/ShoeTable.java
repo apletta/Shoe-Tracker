@@ -12,6 +12,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -22,10 +24,12 @@ public class ShoeTable implements ShoeTableADT {
 
 	private HashArray<Integer, Shoe> shoeTable;
 	private Shoe shoe;
+	private int size;
 
 	public ShoeTable() {
 		this.shoeTable = new HashArray<Integer, Shoe>();
 		this.shoe = null;
+		this.size = 0;
 	}
 
 	/**
@@ -43,6 +47,7 @@ public class ShoeTable implements ShoeTableADT {
 			if (current == null) { // only make new shoe if an existing one with same number doesn't exist
 				current = new Shoe(name);
 				shoeTable.insert(productNumber, current);
+				this.size++;
 			}
 			// whether a shoe exists or not, add the quantity desired to shoe with that
 			// product number
@@ -66,11 +71,11 @@ public class ShoeTable implements ShoeTableADT {
 		try {
 
 			Shoe current = shoeTable.get(productNumber);
-			System.out.println("current: " + current);
 
 			if (current == null) { // make new shoe if it's new or has a non-default image
 				current = new Shoe(name, image);
 				shoeTable.insert(productNumber, current);
+				this.size++;
 			} else { // if an existing shoe may want to apply new image
 				Image currImage = current.image; // current image
 				boolean sameImage = true;
@@ -117,31 +122,86 @@ public class ShoeTable implements ShoeTableADT {
 		}
 	}
 	
-//	public void writeToJSON() {
-//        JSONObject shoeDetails = new JSONObject();
-//        shoeDetails.put("firstName", "Lokesh");
-//        shoeDetails.put("lastName", "Gupta");
-//        shoeDetails.put("website", "howtodoinjava.com");
-//         
-//        JSONObject shoeObject = new JSONObject();
-//        shoeObject.put("employee", shoeDetails);
-//        
-//        //Add shoes to list
-//        JSONArray shoeList = new JSONArray();
-//        shoeList.add(shoeObject);
-//
-//        
-//        //Write JSON file
-//        try (FileWriter file = new FileWriter("shoesTest.json")) {
-// 
-//            file.write(shoeList.toJSONString());
-//            file.flush();
-// 
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        
-//	}
+	public void writeToJSON() {
+		
+		int numKeys =  this.size();
+		int i = 0;
+		int numFound = 0;
+		ArrayList<Integer> productNumbers = new ArrayList<Integer>();
+
+		// Find and save all shoes to list
+		while ( numFound < numKeys) {
+		    try {
+		    	while(this.shoeTable.get(i) == null) {
+		    		i ++;
+		    	}
+		    	
+		    	// Add shoes to list for saving
+		    	productNumbers.add(i);
+			
+				numFound++;
+				i++;
+				
+			} catch (IllegalNullKeyException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		// Add shoe info to JSONArray
+		
+		JSONObject savedShoes = new JSONObject();
+        JSONArray shoeArray = new JSONArray();
+        
+		for(int j=0;j<numKeys;j++) {
+			
+			ShoeInfo shoe;
+			try {
+				shoe = this.lookupShoe(productNumbers.get(j));
+				List<String> list = shoe.shoeSizeList.getKeyList();
+		       
+				int count = 0;
+				for( String sizeString : list) {
+					//ShoeSizeList shoeSizes = shoe.shoeSizeList;
+					Double size = Double.parseDouble(sizeString);
+					
+			        JSONObject shoeDetails = new JSONObject();
+			        shoeDetails.put("productNum", Integer.toString(shoe.productNumber));
+			        shoeDetails.put("productName", shoe.name);
+			        shoeDetails.put("quantity", Integer.toString(shoe.totalQuantity));
+			     // cannot save image because file path to user image not saved, could improve
+			        shoeDetails.put("image", "no-pic.png"); 
+			        shoeDetails.put("size", list.get(count));
+			        shoeDetails.put("quantity", Integer.toString(shoe.shoeSizeList.get(size)));
+			        count++;
+			        
+			        shoeArray.add(shoeDetails);
+			        
+				}
+				
+		        savedShoes.put("shoes", shoeArray);
+				
+
+		        
+			} catch (KeyNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+
+		}
+		
+        //Write JSON file
+        try (FileWriter file = new FileWriter("mySavedShoes.json")) {
+ 
+            file.write(savedShoes.toJSONString());
+            file.flush();
+ 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+	}
 
 	/**
 	 * lookup shoe information from a given productNumber if product does not exit,
@@ -154,14 +214,15 @@ public class ShoeTable implements ShoeTableADT {
 	public ShoeInfo lookupShoe(int productNumber) throws KeyNotFoundException {
 		try {
 			Shoe current = shoeTable.get(productNumber);
+
 			if (current == null) {
 				throw new KeyNotFoundException();
 			} else if (current.image != null) { // if shoe has an image linked to it, pull up ShoeInfo with image
 				this.shoe = current;
-				return new ShoeInfo(productNumber, current.name, current.totalQuantity, current.image);
+				return new ShoeInfo(productNumber, current.name, current.totalQuantity, current.image, current.shoeSizeList);
 			} else {
 				this.shoe = current;
-				return new ShoeInfo(productNumber, current.name, current.totalQuantity);
+				return new ShoeInfo(productNumber, current.name, current.totalQuantity, current.shoeSizeList);
 			}
 		} catch (IllegalNullKeyException e) {
 			return null;
@@ -204,6 +265,10 @@ public class ShoeTable implements ShoeTableADT {
 	 */
 	public int getQuantity(double shoeSize) {
 		return this.shoe.shoeSizeList.get(shoeSize);
+	}
+	
+	public int size() {
+		return this.size;
 	}
 
 }

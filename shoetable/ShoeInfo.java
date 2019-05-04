@@ -16,11 +16,14 @@ public class ShoeInfo {
 	public String name;
 	public int totalQuantity;
 	public Image image;
+	public ShoeSizeList shoeSizeList;
+
 	
-	public ShoeInfo(int productNumber, String name, int totalQuantity) {
+	public ShoeInfo(int productNumber, String name, int totalQuantity, ShoeSizeList shoeSizeList) {
 		this.productNumber = productNumber;
 		this.name = name;
 		this.totalQuantity = totalQuantity;
+		this.shoeSizeList = shoeSizeList;
 	}
 	
 	/**
@@ -31,11 +34,12 @@ public class ShoeInfo {
 	 * @param totalQuantity
 	 * @param image
 	 */
-	public ShoeInfo(int productNumber, String name, int totalQuantity, Image image) {
+	public ShoeInfo(int productNumber, String name, int totalQuantity, Image image, ShoeSizeList shoeSizeList) {
 		this.productNumber = productNumber;
 		this.name = name;
 		this.totalQuantity = totalQuantity;
 		this.image = image;
+		this.shoeSizeList = shoeSizeList;
 	}
 
 }

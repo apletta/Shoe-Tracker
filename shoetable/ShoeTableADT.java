@@ -83,4 +83,8 @@ public interface ShoeTableADT {
 	 */
 	public int getQuantity(double shoeSize);
 	
+	public int size();
+
+	public void writeToJSON();
+	
 }

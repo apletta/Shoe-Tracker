@@ -166,6 +166,7 @@ class AddProductScreen {
         prodQuan.setDisable(true); // set quantity
         loadImageButton.setDisable(true); // load image
         fileList.add(file.getAbsolutePath()); // add the chosen file
+        
       }
     });
 
@@ -265,7 +266,6 @@ class AddProductScreen {
               imageArray.clear(); // clear array
             }
 
-            System.out.println("userImage: " + userImage); // show user image
             // add to stock with given information
             Stock.shoeTable.addShoe(userProdNum, userProdName, userProdSize, userQuantity,
                 userImage);
@@ -300,6 +300,7 @@ class AddProductScreen {
             errorAlert.show(); // show alert
           }
         }
+        
       }
     });
 
@@ -333,6 +334,7 @@ class AddProductScreen {
     Object obj = new JSONParser().parse(new FileReader(jsonFilepath));
     // Creates a new object from parsing
     JSONObject parseMe = (JSONObject) obj;
+    
     // Creates a new array from the "shoes" field of the json file
     JSONArray shoes = (JSONArray) parseMe.get("shoes");
     // For-loop that iterates through the shoes array
@@ -348,9 +350,19 @@ class AddProductScreen {
       // The current shoe's quantity to add
       int quantity = Integer.parseInt((String) jsonShoes.get("quantity"));
       // The current shoe's image to add
+      try {
       Image img = new Image((String) jsonShoes.get("image"));
+      
       // Adds shipment to the stock
       Stock.shoeTable.addShoe(prodNum, prodName, size, quantity, img);
+      
+      } catch (IllegalArgumentException e) {
+    	  Image img = (Image) jsonShoes.get("image");
+    	  
+    	  
+    	     // Adds shipment to the stock
+          Stock.shoeTable.addShoe(prodNum, prodName, size, quantity, img);
+      }
     }
   }
 }
