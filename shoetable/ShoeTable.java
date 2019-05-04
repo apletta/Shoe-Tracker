@@ -140,8 +140,8 @@ public class ShoeTable implements ShoeTableADT {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
-        
-	}
+//        
+//	}
 
 	/**
 	 * lookup shoe information from a given productNumber if product does not exit,
